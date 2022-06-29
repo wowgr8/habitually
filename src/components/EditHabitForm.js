@@ -10,7 +10,7 @@ function EditHabitForm (){
 
   return(
     <React.Fragment>
-      <h3>Edit Habit Form placeholder</h3>
+      <h2>EditHabitForm placeholder</h2>
     </React.Fragment>
   )
 }

@@ -7,8 +7,8 @@ function HabitDetail(){
 
   return(
     <React.Fragment>
-      <h1>Habit Detail</h1>
-      <h3>placeholder for details: HabitName, HabitID, HabitSummary, HabitTimeOpen, HabitTimeGoal, etc.</h3>
+      <h2>HabitDetail placeholder</h2>
+      <p>placeholder for details: HabitName, HabitID, HabitSummary, HabitTimeOpen, HabitTimeGoal, etc.</p>
     </React.Fragment>
   )
 
