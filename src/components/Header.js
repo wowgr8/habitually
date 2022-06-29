@@ -8,7 +8,7 @@ function Header(){
     <React.Fragment>
       <h1>Header Placeholder: HABITUALLY</h1>
       <p>SearchBar.js tag placeholder</p>
-      <p>Link tag for Login placeholder</p>
+      <p>Link tag for Login.js placeholder</p>
     </React.Fragment>
   );
 }
