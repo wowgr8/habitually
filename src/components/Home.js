@@ -12,19 +12,18 @@ function Home() {
 
   // methods placeholder
 
-    return(
-      <React.Fragment>
-        <h1>This is the Home component rendering</h1>
-        <p>Below are placeholders for each component</p>
-        <Header />
-        <SideBar />
-        <EditHabitForm />
-        <HabitDetail />
-        <HabitList />
-        <NewHabitForm />
-      </React.Fragment>
-    );
-  }
+  return(
+    <React.Fragment>
+      <h1>This is the Home component rendering</h1>
+      <p>Below are placeholders for each component</p>
+      <Header />
+      <SideBar />
+      <EditHabitForm />
+      <HabitDetail />
+      <HabitList />
+      <NewHabitForm />
+    </React.Fragment>
+  );
 }
 
 // proptypes placeholder
