@@ -7,14 +7,10 @@ import EditHabitForm from "./EditHabitForm"; // Parent to ReusableForm.js if we 
 import NewHabitForm from "./NewHabitForm"; // Parent to ReusableForm.js if we choose to use one.
 import HabitDetail from "./HabitDetail";
 
-class Home extends React.Component {
-  //constructor placeholder
+function Home() {
+  //usestate placeholder
 
   // methods placeholder
-
-  render(){
-    // conditional between components placeholder
-
 
     return(
       <React.Fragment>
