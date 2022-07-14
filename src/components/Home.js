@@ -12,6 +12,7 @@ import { collection, getDocs } from "firebase/firestore";
 function Home() {
   //usestate placeholder
   const [users, setUsers] = useState([]);
+  // Either restructure collection in database so they are not nested or create a way to access nested collections. 
   const usersCollectionRef = collection(db, "users")
 
   useEffect(() => {
