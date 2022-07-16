@@ -22,3 +22,20 @@
 6. [Known Bugs](#bugs)
 7. [Contact Information](#contact)
 8. [License](#license)
+
+
+
+## Technologies Used <a id="technologies"></a>
+
+* React.js
+* JavaScript - JSX
+* NPM
+* Webpack
+* HTML
+* CSS
+
+
+
+## Description <a id="description"></a>
+
+A React application where ...
