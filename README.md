@@ -4,7 +4,7 @@
 
 ### _July 15, 2022_
 
-#### _A React app for managing and building habits._
+#### _A React app for creating and managing habits._
 
 ## Previews <a id="previews"></a>
 
