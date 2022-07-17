@@ -1,5 +1,7 @@
 import { React, useState } from "react";
 import PropTypes from "prop-types";
+import { collection, getDocs, addDoc } from "firebase/firestore";
+import { db } from '../firebase'
 
 function ReusableForm(){
 
@@ -7,9 +9,11 @@ function ReusableForm(){
   const [newSummary, setNewSummary] = useState("")
   const [newTimeFrame, setNewTimeFrame] = useState("")
 
+  const usersCollectionRef = collection(db, "user");
+
 
   const createUser = async () => {
-    
+    await addDoc(usersCollectionRef, { habitName: newHabit, habitSummary: newSummary, habitTimeFrame: newTimeFrame });
   }
 
 
