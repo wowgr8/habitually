@@ -13,7 +13,7 @@ function Home() {
   //usestate placeholder
   const [users, setUsers] = useState([]);
   // Either restructure collection in database so they are not nested or create a way to access nested collections. 
-  const usersCollectionRef = collection(db, "users")
+  const usersCollectionRef = collection(db, "user");
 
   useEffect(() => {
     const getUsers = async() => {
@@ -32,10 +32,11 @@ function Home() {
           return(
             <div>
               {" "}
-              <h1>Name: {user.name}</h1>
               <h1>Id: {user.id}</h1>
               <h1>Habit: {user.habitName}</h1>
               <h1>Summary: {user.habitSummary}</h1>
+              <h1>Goal date: {user.habitTimeFrame}</h1>
+              <hr></hr>
             </div>
           )
         })}
