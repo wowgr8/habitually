@@ -121,3 +121,23 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 </details>
+
+
+## Known Bugs <a id="bugs"></a>
+
+* _No known issues_
+
+## Contact Me <a id="contact"></a>
+
+If you encounter any issues or have any questions or ideas for this site, please contact:
+
+Cesar Lopez:
+* Email: [Lopez.cesar.aug@gmail.com](mailto:lopez.cesar.aug@gmail.com)
+* Github: [wowgr8](https://github.com/wowgr8)
+* LinkedIn: [https://www.linkedin.com/in/cesar-aug-lopez](https://www.linkedin.com/in/cesar-aug-lopez)
+  
+## License <a id="license"></a>
+
+_MIT_
+
+Copyright (c) _2022_ _Cesar Lopez_
