@@ -7,13 +7,23 @@ import EditHabitForm from "./EditHabitForm"; // Parent to ReusableForm.js if we 
 import NewHabitForm from "./NewHabitForm"; // Parent to ReusableForm.js if we choose to use one.
 import HabitDetail from "./HabitDetail";
 import { db } from '../firebase'
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, updateDoc, doc } from "firebase/firestore";
 
 function Home() {
   //usestate placeholder
   const [users, setUsers] = useState([]);
+  const [newHabit, setNewHabit] = useState("")
+  const [newSummary, setNewSummary] = useState("")
+  const [newTimeFrame, setNewTimeFrame] = useState("")
   // Either restructure collection in database so they are not nested or create a way to access nested collections. 
   const usersCollectionRef = collection(db, "user");
+
+  // function to update habit --- WIP still
+  const updateHabit = async(id, habitName) => {
+    const userDoc = doc(db, "user", id);
+    const newFields = {habitName: "Test"};
+    await updateDoc(userDoc, newFields);
+  }
 
   useEffect(() => {
     const getUsers = async() => {
@@ -31,11 +41,12 @@ function Home() {
         {users.map((user) => {
           return(
             <div>
-              {" "}
+              {/* {" "} */}
               <h1>Id: {user.id}</h1>
               <h1>Habit: {user.habitName}</h1>
               <h1>Summary: {user.habitSummary}</h1>
               <h1>Goal date: {user.habitTimeFrame}</h1>
+              <button onClick={() => {updateHabit(user.habitName, user.habitSummary, user.habitTimeFrame)}}> Edit Habit </button>
               <hr></hr>
             </div>
           )
