@@ -7,7 +7,7 @@ import EditHabitForm from "./EditHabitForm"; // Parent to ReusableForm.js if we 
 import NewHabitForm from "./NewHabitForm"; // Parent to ReusableForm.js if we choose to use one.
 import HabitDetail from "./HabitDetail";
 import { db } from '../firebase'
-import { collection, getDocs, updateDoc, doc } from "firebase/firestore";
+import { collection, getDocs, updateDoc, addDoc } from "firebase/firestore";
 
 function Home() {
   //usestate placeholder
@@ -19,11 +19,11 @@ function Home() {
   const usersCollectionRef = collection(db, "user");
 
   // function to update habit --- WIP still
-  const updateHabit = async(id, habitName) => {
-    const userDoc = doc(db, "user", id);
-    const newFields = {habitName: "Test"};
-    await updateDoc(userDoc, newFields);
-  }
+  // const updateHabit = async(id, habitName) => {
+  //   const userDoc = doc(db, "user", id);
+  //   const newFields = {habitName: "Test"};
+  //   await updateDoc(userDoc, newFields);
+  // }
 
   useEffect(() => {
     const getUsers = async() => {
@@ -33,6 +33,13 @@ function Home() {
     getUsers()
   }, []);
 
+  // Was in REUSABLEFORM.js
+  const createUser = async (e) => {
+    setNewHabit(e.target.value);
+    setNewSummary(e.target.value);
+    setNewTimeFrame(e.target.value);
+    await addDoc(usersCollectionRef, { habitName: newHabit, habitSummary: newSummary, habitTimeFrame: newTimeFrame });
+  }
   // methods placeholder
 
   return(
@@ -40,13 +47,16 @@ function Home() {
       <div className="usersLoop">
         {users.map((user) => {
           return(
-            <div>
+            <div className="habitCard">
               {/* {" "} */}
-              <h1>Id: {user.id}</h1>
-              <h1>Habit: {user.habitName}</h1>
-              <h1>Summary: {user.habitSummary}</h1>
-              <h1>Goal date: {user.habitTimeFrame}</h1>
-              <button onClick={() => {updateHabit(user.habitName, user.habitSummary, user.habitTimeFrame)}}> Edit Habit </button>
+              <div className="container">
+                <h1>Id: {user.id}</h1>
+                <h1>Habit: {user.habitName}</h1>
+                <h1>Summary: {user.habitSummary}</h1>
+                <h1>Goal date: {user.habitTimeFrame}</h1>
+              </div>
+              {/* I'll come back to finish handling edit functionality after fully implementing creating habits (lifting state and creating props and handlers.). WIP - ignore for now.
+              <button onClick={() => {updateHabit(user.habitName, user.habitSummary, user.habitTimeFrame)}}> Edit Habit </button> */}
               <hr></hr>
             </div>
           )
@@ -59,7 +69,7 @@ function Home() {
       <EditHabitForm />
       <HabitDetail />
       <HabitList />
-      <NewHabitForm />
+      <NewHabitForm createUser = {createUser} />
     </div>
   );
 }
