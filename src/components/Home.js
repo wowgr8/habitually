@@ -12,9 +12,9 @@ import { collection, getDocs, updateDoc, addDoc } from "firebase/firestore";
 function Home() {
   //usestate placeholder
   const [users, setUsers] = useState([]);
-  const [newHabit, setNewHabit] = useState("")
-  const [newSummary, setNewSummary] = useState("")
-  const [newTimeFrame, setNewTimeFrame] = useState("")
+  const [newHabit, setNewHabit] = useState(() =>"")
+  const [newSummary, setNewSummary] = useState(() =>"")
+  const [newTimeFrame, setNewTimeFrame] = useState(() =>"")
   // Either restructure collection in database so they are not nested or create a way to access nested collections. 
   const usersCollectionRef = collection(db, "user");
 
@@ -34,12 +34,12 @@ function Home() {
   }, []);
 
   // Was in REUSABLEFORM.js
-  const createUser = async (e) => {
-    setNewHabit(e.target.value);
-    setNewSummary(e.target.value);
-    setNewTimeFrame(e.target.value);
-    await addDoc(usersCollectionRef, { habitName: newHabit, habitSummary: newSummary, habitTimeFrame: newTimeFrame });
-  }
+  // const createUser = async (e) => {
+    // setNewHabit(e.target.value);
+    // setNewSummary(e.target.value);
+    // setNewTimeFrame(e.target.value);
+    // await addDoc(usersCollectionRef, { habitName: newHabit, habitSummary: newSummary, habitTimeFrame: newTimeFrame });
+  // }
   // methods placeholder
 
   return(
@@ -69,7 +69,7 @@ function Home() {
       <EditHabitForm />
       <HabitDetail />
       <HabitList />
-      <NewHabitForm createUser = {createUser} />
+      <NewHabitForm  />
     </div>
   );
 }
