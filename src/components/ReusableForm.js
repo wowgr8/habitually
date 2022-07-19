@@ -10,7 +10,7 @@ function ReusableForm(props){
     <div>
       <h2>Reusable Form:</h2>
       <p>Needs onSubmit e.handler, form tag w/ input tags for Habit values</p>
-      <form onSubmit={(props.createUser)}>
+      <form onSubmit={(props.onSubmissionHandler)}>
         <input 
           type='text'
           name="habitName"
@@ -30,7 +30,7 @@ function ReusableForm(props){
 }
 
 ReusableForm.propTypes = {
-  createUser: PropTypes.func,
+  onSubmissionHandler: PropTypes.func,
   buttonText: PropTypes.string
 };
 
