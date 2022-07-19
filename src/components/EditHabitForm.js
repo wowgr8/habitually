@@ -1,26 +1,46 @@
-import React from "react";
-import ReusableForm from "./ReusableForm"; // If we choose to use
-import PropTypes from "prop-types";
-// import { useFirestore } from 'react-redux-firebase';
+import { React, useState, useEffect } from "react";
+import ReusableForm from "./ReusableForm"; 
+import { collection, updateDoc, doc, getDocs } from "firebase/firestore";
+import { db } from '../firebase'
 
 function EditHabitForm (){
-  // placeholder for firestore reference
-  
+  const [newHabit, setNewHabit] = useState(() => "")
+  const [newSummary, setNewSummary] = useState(() =>"")
+  const [newTimeFrame, setNewTimeFrame] = useState(() =>"")
+
+  // const [users, setUsers] = useState([]);
+  // const usersCollectionRef = collection(db, "user");
+
+  // useEffect(() => {
+  //   const getUsers = async() => {
+  //     const data = await getDocs(usersCollectionRef);
+  //     setUsers(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+  //   }
+  //   getUsers()
+  // }, []);
+
   // placeholder for any methods/handling submission of form
-  // function to update habit --- WIP still
-  // const updateHabit = async(id, habitName) => {
-  //   const userDoc = doc(db, "user", id);
-  //   const newFields = {habitName: "Test"};
-  //   await updateDoc(userDoc, newFields);
-  // }
+  const updateHabit = async( e, id) => {
+    e.preventDefault();
+    const userDoc = doc(db, "user", id);
+    const newFields = {habitName: newHabit, habitSummary: newSummary, habitTimeFrame: newTimeFrame};
+    await updateDoc(userDoc, newFields);
+  }
 
   //WIP - ignore for now.
   //<button onClick={() => {updateHabit(user.habitName, user.habitSummary, user.habitTimeFrame)}}> Edit Habit </button>
   
   return(
-    <React.Fragment>
+    <div>
       <h2>EditHabitForm/REUSABLEFORM placeholder</h2>
-    </React.Fragment>
+      <ReusableForm 
+        onSubmissionHandler = {updateHabit}
+        buttonText="UPDATE!"
+        setNewHabit = {setNewHabit}
+        setNewSummary = {setNewSummary}
+        setNewTimeFrame = {setNewTimeFrame}
+        />
+    </div>
   )
 }
 
