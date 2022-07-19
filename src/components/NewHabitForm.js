@@ -19,7 +19,7 @@ function NewHabitForm(){
     <div>
       <h2>ADD NEW HABIT </h2>      
       <ReusableForm 
-        createUser = {createUser}
+        onSubmissionHandler = {createUser}
         buttonText="CREATE!"
         setNewHabit = {setNewHabit}
         setNewSummary = {setNewSummary}
