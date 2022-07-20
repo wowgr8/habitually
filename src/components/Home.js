@@ -12,10 +12,12 @@ import { collection, getDocs, updateDoc, addDoc } from "firebase/firestore";
 function Home() {
 
   ////// Perhaps add a toggle useState and a function with intitial render passed into it..
-  // function initialView(){
-  //   return isOpen, users;
+  // function defaultState(){
+  //   selectedTicket: null,
+  //    isOpen: false,
+  //    etc
   // }
-  // const [view, setView] = useState(()=> initialView());
+  // const [ state, setState] = useState(()=> defaultState());
 
   
   //This users/setUsers and userCollectionRef will need to be moved to HabitList.js
