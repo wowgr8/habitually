@@ -11,20 +11,6 @@ function EditHabitForm (props){
 
   const { isOpen, setIsOpen } = props;
 
-
-
-  // temp here to render habit list in return(), same with useEffect() -> will eventually be moved into habitlist.js
-  const usersCollectionRef = collection(db, "user");
-  const [users, setUsers] = useState([]);
-  useEffect(() => {
-    const getUsers = async() => {
-      const data = await getDocs(usersCollectionRef);
-      setUsers(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
-    }
-    getUsers()
-  }, []);
-
-
   const updateHabit = async(e, id) => {
     e.preventDefault();
     const newFields = {habitName: newHabit, 
@@ -45,29 +31,11 @@ function EditHabitForm (props){
         setNewSummary = {setNewSummary}
         setNewTimeFrame = {setNewTimeFrame}
         />
-
-      {/* This loop belongs in habitLIst. Temp here for dev purposes. */}
-      <div className="usersLoop">
-        {users.map((user) => {
-          return(
-            <div className="habitCard">
-              <div className="container">
-                <h1>Id: {user.id}</h1>
-                <h1>Habit: {user.habitName}</h1>
-                <h1>Summary: {user.habitSummary}</h1>
-                <h1>Goal date: {user.habitTimeFrame}</h1>
-              </div>
-              {/* {"MAYBE ADD ONCLICK BUTTON HERE FOR EDIT/UPDATEHABIT() from edithabitform.js "} */}
-              <hr></hr>
-            </div>
-          )
-        })}
-      </div>
     </div>
   )
 }
 
-EditHabitForm.propTypes = {
+EditHabitForm.propTypes = { // Is this needed? Everything works fine if 38-40 are commented out - WIP
   setIsOpen: PropTypes.bool,
 };
 
