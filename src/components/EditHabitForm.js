@@ -1,13 +1,20 @@
 import { React, useState, useEffect } from "react";
 import ReusableForm from "./ReusableForm"; 
 import { collection, updateDoc, doc, getDocs } from "firebase/firestore";
-import { db } from '../firebase'
+import { db } from '../firebase';
+import PropTypes from "prop-types";
 
-function EditHabitForm (){
+
+function EditHabitForm (props){
   const [newHabit, setNewHabit] = useState(() => "")
   const [newSummary, setNewSummary] = useState(() =>"")
   const [newTimeFrame, setNewTimeFrame] = useState(() =>"")
+  const { isOpen, setIsOpen } = props;
 
+  const handleClose = (e) => {
+    e.preventDefault();
+    setIsOpen(!isOpen);
+  }
   // const [users, setUsers] = useState([]);
   // const usersCollectionRef = collection(db, "user");
 
@@ -40,10 +47,15 @@ function EditHabitForm (){
         setNewSummary = {setNewSummary}
         setNewTimeFrame = {setNewTimeFrame}
         />
+      <div>
+        <button onClick={handleClose}>Back to Add new Habit</button>
+      </div>
     </div>
   )
 }
 
-// placeholder for any propTypes
+EditHabitForm.propTypes = {
+  setIsOpen: PropTypes.bool,
+};
 
 export default EditHabitForm;
