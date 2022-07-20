@@ -12,7 +12,10 @@ function NewHabitForm(){
 
   const createUser = async (e) => {
     e.preventDefault();
-    await addDoc(usersCollectionRef, { habitName: newHabit, habitSummary: newSummary, habitTimeFrame: newTimeFrame });
+    await addDoc(usersCollectionRef, { habitName: newHabit, 
+                                        habitSummary: newSummary, 
+                                        habitTimeFrame: newTimeFrame 
+                                      });
   }
 
   return(
