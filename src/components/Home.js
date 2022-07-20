@@ -14,15 +14,16 @@ function Home() {
   const [users, setUsers] = useState([]);
   const [isOpen, setIsOpen] = useState(() => false); // Will handle toggling visible component - atm being passed into components as props.
 
-  const usersCollectionRef = collection(db, "user");
+  // Temp moved this and useEffect into editHabitForm.js for dev purposes
+  // const usersCollectionRef = collection(db, "user");
 
-  useEffect(() => {
-    const getUsers = async() => {
-      const data = await getDocs(usersCollectionRef);
-      setUsers(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
-    }
-    getUsers()
-  }, []);
+  // useEffect(() => {
+  //   const getUsers = async() => {
+  //     const data = await getDocs(usersCollectionRef);
+  //     setUsers(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+  //   }
+  //   getUsers()
+  // }, []);
 
   return(
     <div>
@@ -47,7 +48,7 @@ function Home() {
         //   </div>
 
         : <NewHabitForm  setIsOpen={setIsOpen}
-                          isOpen={isOpen}/> 
+                          isOpen={isOpen}/>
       }
       {/* This div need to be moved to HabitList.js */}
 
