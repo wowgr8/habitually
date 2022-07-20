@@ -15,6 +15,11 @@ function EditHabitForm (props){
   const usersCollectionRef = collection(db, "user");
 
 
+  // temp method to change component render back to newHabitForm.js, This will eventually be combined with updateHabit() below.
+  const handleClose = (e) => {
+    e.preventDefault();
+    setIsOpen(!isOpen);
+  }
 
   // placeholder for any methods/handling submission of form
   // const updateHabit = async( e, id) => {
@@ -50,6 +55,9 @@ function EditHabitForm (props){
         setNewSummary = {setNewSummary}
         setNewTimeFrame = {setNewTimeFrame}
         />
+        <div>
+          <button onClick={handleClose}>Back to Add new Habit</button>
+        </div>
     </div>
   )
 }
