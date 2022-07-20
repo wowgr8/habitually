@@ -13,7 +13,7 @@ function EditHabitForm (props){
 
 
 
-  // temp here to render habit list in return(), same with useEffect()
+  // temp here to render habit list in return(), same with useEffect() -> will eventually be moved into habitlist.js
   const usersCollectionRef = collection(db, "user");
   const [users, setUsers] = useState([]);
   useEffect(() => {
