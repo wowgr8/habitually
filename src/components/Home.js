@@ -12,13 +12,8 @@ import { collection, getDocs, updateDoc, addDoc } from "firebase/firestore";
 function Home() {
   //This users/setUsers and userCollectionRef will need to be moved to HabitList.js
   const [users, setUsers] = useState([]);
-  // const [newHabit, setNewHabit] = useState(() =>"")
-  // const [newSummary, setNewSummary] = useState(() =>"")
-  // const [newTimeFrame, setNewTimeFrame] = useState(() =>"")
-  // Either restructure collection in database so they are not nested or create a way to access nested collections. 
+
   const usersCollectionRef = collection(db, "user");
-
-
 
   useEffect(() => {
     const getUsers = async() => {
@@ -27,15 +22,6 @@ function Home() {
     }
     getUsers()
   }, []);
-
-  // Was in REUSABLEFORM.js
-  // const createUser = async (e) => {
-    // setNewHabit(e.target.value);
-    // setNewSummary(e.target.value);
-    // setNewTimeFrame(e.target.value);
-    // await addDoc(usersCollectionRef, { habitName: newHabit, habitSummary: newSummary, habitTimeFrame: newTimeFrame });
-  // }
-  // methods placeholder
 
   return(
     <div>
@@ -68,8 +54,5 @@ function Home() {
     </div>
   );
 }
-
-// proptypes placeholder
-
 
 export default Home;
