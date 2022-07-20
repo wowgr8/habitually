@@ -1,7 +1,8 @@
 import { React, useState, useEffect } from "react";
 import ReusableForm from "./ReusableForm"; 
-import { collection, updateDoc, doc, getDocs } from "firebase/firestore";
+import { collection, updateDoc, doc, getDocs, setDoc } from "firebase/firestore";
 import { db } from '../firebase'
+// import {usersCollectionRef} from "./Home";
 
 function EditHabitForm (){
   const [newHabit, setNewHabit] = useState(() => "")
@@ -9,22 +10,28 @@ function EditHabitForm (){
   const [newTimeFrame, setNewTimeFrame] = useState(() =>"")
 
   // const [users, setUsers] = useState([]);
-  // const usersCollectionRef = collection(db, "user");
+  const usersCollectionRef = collection(db, "user");
 
-  // useEffect(() => {
-  //   const getUsers = async() => {
-  //     const data = await getDocs(usersCollectionRef);
-  //     setUsers(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
-  //   }
-  //   getUsers()
-  // }, []);
 
   // placeholder for any methods/handling submission of form
-  const updateHabit = async( e, id) => {
+  // const updateHabit = async( e, id) => {
+  //   e.preventDefault();
+  //   // const userDoc = doc(db, "user", id);
+  //   const newFields = {habitName: newHabit, 
+  //                       habitSummary: newSummary, 
+  //                       habitTimeFrame: newTimeFrame, 
+  //                       id: doc.id // Figure out if ID belongs here or elsewhere...
+  //                     }; 
+  //   await setDoc(usersCollectionRef, newFields);
+  // }
+  const updateHabit = async(e) => {
     e.preventDefault();
-    const userDoc = doc(db, "user", id);
-    const newFields = {habitName: newHabit, habitSummary: newSummary, habitTimeFrame: newTimeFrame};
-    await updateDoc(userDoc, newFields);
+    const newFields = {habitName: newHabit, 
+                        habitSummary: newSummary, 
+                        habitTimeFrame: newTimeFrame, 
+                        id: doc.id // Figure out if ID belongs here or elsewhere...
+                      }; 
+    await setDoc(doc(db, "user"), newFields)
   }
 
   //WIP - ignore for now.
