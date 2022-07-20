@@ -11,39 +11,29 @@ function EditHabitForm (props){
 
   const { isOpen, setIsOpen } = props;
 
-  // const [users, setUsers] = useState([]);
+
+
+  // temp here to render habit list in return(), same with useEffect()
   const usersCollectionRef = collection(db, "user");
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    const getUsers = async() => {
+      const data = await getDocs(usersCollectionRef);
+      setUsers(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+    }
+    getUsers()
+  }, []);
 
 
-  // temp method to change component render back to newHabitForm.js, This will eventually be combined with updateHabit() below.
-  const handleClose = (e) => {
-    e.preventDefault();
-    setIsOpen(!isOpen);
-  }
-
-  // placeholder for any methods/handling submission of form
-  // const updateHabit = async( e, id) => {
-  //   e.preventDefault();
-  //   // const userDoc = doc(db, "user", id);
-  //   const newFields = {habitName: newHabit, 
-  //                       habitSummary: newSummary, 
-  //                       habitTimeFrame: newTimeFrame, 
-  //                       id: doc.id // Figure out if ID belongs here or elsewhere...
-  //                     }; 
-  //   await setDoc(usersCollectionRef, newFields);
-  // }
-  const updateHabit = async(e) => {
+  const updateHabit = async(e, id) => {
     e.preventDefault();
     const newFields = {habitName: newHabit, 
                         habitSummary: newSummary, 
                         habitTimeFrame: newTimeFrame, 
-                        id: doc.id // Figure out if ID belongs here or elsewhere...
                       }; 
-    await setDoc(doc(db, "user"), newFields)
+    setIsOpen(!isOpen);
+    await updateDoc(doc(db, "user", id), newFields) // this method works when id is replaced with hardcoded id ("7wTfjkYOarXknMqthXug"). This should work as-is after implementation of habitlist->habit.js ***by id*** and edit button with handler to bring you to this component ***by id***
   }
-
-  //WIP - ignore for now.
-  //<button onClick={() => {updateHabit(user.habitName, user.habitSummary, user.habitTimeFrame)}}> Edit Habit </button>
   
   return(
     <div>
@@ -55,9 +45,24 @@ function EditHabitForm (props){
         setNewSummary = {setNewSummary}
         setNewTimeFrame = {setNewTimeFrame}
         />
-        <div>
-          <button onClick={handleClose}>Back to Add new Habit</button>
-        </div>
+
+      {/* This loop belongs in habitLIst. Temp here for dev purposes. */}
+      <div className="usersLoop">
+        {users.map((user) => {
+          return(
+            <div className="habitCard">
+              <div className="container">
+                <h1>Id: {user.id}</h1>
+                <h1>Habit: {user.habitName}</h1>
+                <h1>Summary: {user.habitSummary}</h1>
+                <h1>Goal date: {user.habitTimeFrame}</h1>
+              </div>
+              {/* {"MAYBE ADD ONCLICK BUTTON HERE FOR EDIT/UPDATEHABIT() from edithabitform.js "} */}
+              <hr></hr>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
