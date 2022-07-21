@@ -5,7 +5,7 @@ import { db } from '../firebase'
 
 function Habit(props){
 
-  // const { users, setUsers, } = props;
+  const { users, setUsers, } = props;
   // const usersCollectionRef = collection(db, "user");
 
   // useEffect(() => {
@@ -16,26 +16,44 @@ function Habit(props){
   //   getUsers()
   // }, []);
 
-  // const handleChangingSelectedHabit = (id) => {
-  //   const selectedHabit = usersCollectionRef.filter(users => users.id === id)[0];
-  //   // this.setState({selectedKeg: selectedKeg});
-  // }
+  const { habitClicked, id, habitName, habitSummary, habitTimeFrame } = props
 
-  // return(
-  //   <div>
-  //     <h2>Habit placeholder</h2>
-  //     <p>Place holder for habit details/properties display and onclick method prop</p>
-  //     <div id ="cardNew">
-  //       <div onClick = {() => handleChangingSelectedHabit(users.id)} >
-  //         <h1>Habit: {users.habitName}</h1>
-  //         <hr/>
-  //         <h1>Id: {users.id}</h1>
-  //         <h1>Summary: {users.habitSummary}</h1>
-  //         <h1>Goal date: {users.habitTimeFrame}</h1>
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
+  return(
+    // <div>
+    //   <h2>Habit placeholder</h2>
+    //   <p>Place holder for habit details/properties display and onclick method prop</p>
+    //   <div id ="individualHabit">
+    //     <div onClick = {() => handleChangingSelectedHabit(users.id)} >
+    //       <h1>Habit: {users.habitName}</h1>
+    //       <hr/>
+    //       <h1>Id: {users.id}</h1>
+    //       <h1>Summary: {users.habitSummary}</h1>
+    //       <h1>Goal date: {users.habitTimeFrame}</h1>
+    //     </div>
+    //   </div>
+    // </div>
+    <div className="individualHabit">
+      <div className="container">
+        <p>Individual Habit.js </p>
+        <div onClick={()=>habitClicked(id)}>
+          <h1>Id: {id}</h1>
+          <h1>Habit: {habitName}</h1>
+          <h1>Summary: {habitSummary}</h1>
+          <h1>Goal date: {habitTimeFrame}</h1>
+        </div>
+      </div>
+
+    </div>
+  );
+}
+
+Habit.propTypes = {
+  id: PropTypes.string,
+  habitName: PropTypes.string,
+  habitSummary: PropTypes.string,
+  habitTimeFrame: PropTypes.string,
+  habitClicked: PropTypes.func
 }
 
 export default Habit;
+
