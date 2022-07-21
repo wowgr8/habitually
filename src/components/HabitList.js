@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import Habit from "./Habit";
-import { collection, updateDoc, doc, getDocs, setDoc } from "firebase/firestore";
+import { collection, updateDoc, doc, get, getDoc, getDocs, setDoc } from "firebase/firestore";
 import { db } from '../firebase';
 import PropTypes from "prop-types";
 
@@ -19,9 +19,19 @@ function HabitList(props){
     getUsers()
   }, []);
 
-  const onHabitSelection =(id)=> {
-    const selectedHabit = users.filter(users.id === id)[0];
-    // cond render will go here. setIsOpen(!isOpen);
+  const onHabitSelection = async (id)=> {
+    // e.preventDefault();
+    // const selectedHabit = usersCollectionRef.filter(doc.id === id)[0];
+
+    setIsToggle(!isToggle);
+    console.log("Toggle to habit.js successful");
+    const idRef = doc(db, "user", id);
+    console.log("idRef = " + idRef)
+    const selectedHabit = await getDoc(idRef === id); // issue lies within here.... something here is not tapping into the db correctly
+    // const selectedHabit = () => usersCollectionRef.get(users).filter(doc => doc.id === id)[0]; // WIP on this line. 
+    console.log("selectedHabit success " + selectedHabit);
+    console.log(selectedHabit);
+
   }
   const goTohabit = (e)=> {
     e.preventDefault();
@@ -33,24 +43,25 @@ function HabitList(props){
       <div className="render">
         {isToggle 
           ? <Habit /> 
-          :  <div className="habitLoop">
+          : <div className="habitLoop">
               <p>habitlist.js</p>
-              {users.map((user) => {
-                return(
-                  <div className="row">
-                    <div className="col mb-2">
-                      <Habit
-                        habitClicked={onHabitSelection}
-                        id={user.id}
-                        habitName={user.habitName}
-                        habitSummary={user.habitSummary}
-                        habitTimeFrame={user.habitTimeFrame}
-                        />
-                    </div>
-                    <hr></hr>
-                  </div>
-                )
-              })}
+              <div className="row">
+                {users.map((user) => {
+                  return(
+
+                      <div className="col mb-2">
+                        <Habit
+                          habitClicked={onHabitSelection}
+                          id={user.id}
+                          habitName={user.habitName}
+                          habitSummary={user.habitSummary}
+                          habitTimeFrame={user.habitTimeFrame}
+                          />
+                      <hr></hr>
+                      </div>
+                  )
+                })}
+              </div>
             </div>
         }
       </div>
