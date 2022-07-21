@@ -25,7 +25,7 @@ function Habit(props){
         {/* id is not being read in this component but when it returns back in the HabitList component, it is grabbing the id just fine. -WIP */}
         <div onClick={()=>habitClicked(id)}> 
           <h1>Id: {id}</h1>
-          {console.log("test in habit.js " + id)}
+          {console.log("test in habit.js - id: " + id)}
           <h1>Habit: {habitName}</h1>
           <h1>Summary: {habitSummary}</h1>
           <h1>Goal date: {habitTimeFrame}</h1>
