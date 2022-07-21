@@ -19,24 +19,13 @@ function Habit(props){
   const { habitClicked, id, habitName, habitSummary, habitTimeFrame } = props
 
   return(
-    // <div>
-    //   <h2>Habit placeholder</h2>
-    //   <p>Place holder for habit details/properties display and onclick method prop</p>
-    //   <div id ="individualHabit">
-    //     <div onClick = {() => handleChangingSelectedHabit(users.id)} >
-    //       <h1>Habit: {users.habitName}</h1>
-    //       <hr/>
-    //       <h1>Id: {users.id}</h1>
-    //       <h1>Summary: {users.habitSummary}</h1>
-    //       <h1>Goal date: {users.habitTimeFrame}</h1>
-    //     </div>
-    //   </div>
-    // </div>
     <div className="individualHabit">
       <div className="container">
         <p>Individual Habit.js </p>
-        <div onClick={()=>habitClicked(id)}>
+        {/* id is not being read in this component but when it returns back in the HabitList component, it is grabbing the id just fine. -WIP */}
+        <div onClick={()=>habitClicked(id)}> 
           <h1>Id: {id}</h1>
+          {console.log("test in habit.js " + id)}
           <h1>Habit: {habitName}</h1>
           <h1>Summary: {habitSummary}</h1>
           <h1>Goal date: {habitTimeFrame}</h1>
