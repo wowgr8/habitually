@@ -7,9 +7,10 @@ import PropTypes from "prop-types";
 function HabitList(props){
   
   const { isOpen, setIsOpen } = props; // Will this be needed here? WIP
+  const [isToggle, setIsToggle] = useState(() => false); // dev purposes/ will delete soon
 
-  const usersCollectionRef = collection(db, "user");
   const [users, setUsers] = useState([]);
+  const usersCollectionRef = collection(db, "user");
   useEffect(() => {
     const getUsers = async() => {
       const data = await getDocs(usersCollectionRef);
@@ -18,36 +19,48 @@ function HabitList(props){
     getUsers()
   }, []);
 
-  return(
+  const onHabitSelection =(id)=> {
+    const selectedHabit = users.filter(users.id === id)[0];
+    // cond render will go here. setIsOpen(!isOpen);
+  }
+  const goTohabit = (e)=> {
+    e.preventDefault();
+    setIsToggle(!isToggle);
+  }
 
-  //   <React.Fragment>
-  //     <h2>Placeholder for HabitList: will hold loop for all Habit.js's</h2>
-  //     <h2>loop:</h2>
-  //      <h2>user(id)
-  //          <habit /> 
-  //      </h2>
-  //     <p>This loop will return props to Habit.js components</p>
-  //     <Habit users={users} setUsers={setUsers} /> ---- Ignore this line. useEffect will be moved here though. 
-  //   </React.Fragment>
-    <div className="usersLoop">
-      {users.map((user) => {
-        return(
-          <div className="habitCard">
-            <div className="container">
-              <h1>Id: {user.id}</h1>
-              <h1>Habit: {user.habitName}</h1>
-              <h1>Summary: {user.habitSummary}</h1>
-              <h1>Goal date: {user.habitTimeFrame}</h1>
+  return(
+    <div className="habitListView">
+      <div className="render">
+        {isToggle 
+          ? <Habit /> 
+          :  <div className="habitLoop">
+              <p>habitlist.js</p>
+              {users.map((user) => {
+                return(
+                  <div className="row">
+                    <div className="col mb-2">
+                      <Habit
+                        habitClicked={onHabitSelection}
+                        id={user.id}
+                        habitName={user.habitName}
+                        habitSummary={user.habitSummary}
+                        habitTimeFrame={user.habitTimeFrame}
+                        />
+                    </div>
+                    <hr></hr>
+                  </div>
+                )
+              })}
             </div>
-            {/* {"MAYBE ADD ONCLICK BUTTON HERE FOR EDIT/UPDATEHABIT() from edithabitform.js "} */}
-            <hr></hr>
-          </div>
-        )
-      })}
+        }
+      </div>
+      <div>
+        <button onClick={goTohabit}>Go to habit.js</button>
+      </div>
     </div>
   )
 }
 
-// placeholder for proptypes if we choose to hold any slice of state in redux
-
 export default HabitList;
+// either let home.js handle toggle to ind. habit.js so that you dont have two <habit> tags here. or
+// 
