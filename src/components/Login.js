@@ -1,5 +1,6 @@
 import React from "react";
-// import import firebase from 'firebase/compat/app';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
 
 function Login(){
 
@@ -8,9 +9,17 @@ function Login(){
   return(
     <React.Fragment>
       <h2>placeholder for onsubmit forms</h2>
-      <p>signup</p>
-      <p>login</p>
-      <p>logout</p>
+      <form onSubmit={doSignUp}>
+        <input
+          type='text'
+          name='email'
+          placeholder='email' />
+        <input
+          type='password'
+          name='password'
+          placeholder='Password' />
+        <button type='submit'>Sign up</button>
+      </form>
     </React.Fragment>
   );
 }
