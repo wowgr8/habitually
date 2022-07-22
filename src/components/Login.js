@@ -1,6 +1,6 @@
 import React from "react";
 import { auth } from "../firebase";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 function Login(){
 
@@ -43,6 +43,18 @@ function Login(){
     });
   }
 
+  const authSignOut = async (event) => {
+    event.preventDefault();
+    signOut(auth).then(() => {
+      console.log("Till next time!");
+    }).catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log("failed SignOut");
+      console.log(errorCode);
+      console.log(errorMessage);
+    });
+  }
 
   return(
     <React.Fragment>
@@ -70,8 +82,8 @@ function Login(){
           placeholder='Password' />
         <button type='submit'>Sign in</button>
       </form>
-      {/* <h1>Sign Out</h1>
-      <button onClick={doSignOut}>Sign out</button> */}
+      <h1>Sign Out</h1>
+      <button onClick={authSignOut}>Sign out</button>
     </React.Fragment>
   );
 }
