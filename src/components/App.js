@@ -1,17 +1,30 @@
 import './App.css';
 import Home from './Home';
-// import Login.js
-// import router, swith, route from react-router-dom for login/authentication
+import Login from "./Login";
+import Header from './Header';
 // import Material UI for styling
+import { 
+  BrowserRouter as Router,
+  Routes,
+  Route 
+} from "react-router-dom";
+
 
 function App() {
   return (
-    <div className="App">
-      {/* <Login className="App-login">
-        
-      </Login> */}
-      <Home />
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <div className="card">
+          <div className='row'>
+            <Routes>
+              <Route path="/login" element={<Login />}/>
+              <Route path ="/" element={<Home />}/>
+            </Routes>
+            </div>
+          </div>
+      </div>
+    </Router>
   );
 }
 
