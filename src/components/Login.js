@@ -57,7 +57,7 @@ function Login(){
   }
 
   return(
-    <React.Fragment>
+    <div className="App-login">
       <h1>Sign up</h1>
       <form onSubmit={authSignUp}>
         <input
@@ -84,7 +84,7 @@ function Login(){
       </form>
       <h1>Sign Out</h1>
       <button onClick={authSignOut}>Sign out</button>
-    </React.Fragment>
+    </div>
   );
 }
 
