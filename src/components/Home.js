@@ -6,6 +6,7 @@ import HabitList from "./HabitList"; // Parent to Habit.js
 import EditHabitForm from "./EditHabitForm"; // Parent to ReusableForm.js if we choose to use one.
 import NewHabitForm from "./NewHabitForm"; // Parent to ReusableForm.js if we choose to use one.
 import HabitDetail from "./HabitDetail";
+import Login from "./Login";
 import { db } from '../firebase';
 import { collection, getDocs, updateDoc, addDoc } from "firebase/firestore";
 
@@ -19,7 +20,7 @@ function Home() {
       {isOpen 
         ? <HabitList setIsOpen={setIsOpen}
                           isOpen={isOpen}/>
-        : <NewHabitForm  setIsOpen={setIsOpen}
+        : <Login  setIsOpen={setIsOpen}
                           isOpen={isOpen}/>
       }
 
