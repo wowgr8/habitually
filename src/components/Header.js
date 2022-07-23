@@ -1,11 +1,17 @@
 import React from "react";
 import SearchBar from "./SearchBar"; // if we choose to implement
-import { Link } from "react-router-dom";
+
+import { Link, Navigate } from "react-router-dom";
+import LandingPage from "./LandingPage";
 // import for any image/logo for app
 
-function Header(){
+function Header({setisAuth}){
+
+
+
+
   return(
-    <React.Fragment>
+    <div className="container">
       <h1>Header app name/logo Placeholder: HABITUALLY</h1>
       <ul>
         <li>
@@ -18,7 +24,9 @@ function Header(){
           <SearchBar />
         </div>
       </ul>
-    </React.Fragment>
+      {/* Temp here for dev purposes */}
+      <LandingPage/> 
+    </div>
   );
 }
 
