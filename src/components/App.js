@@ -16,7 +16,11 @@ import NewHabitForm from './NewHabitForm';
 
 
 function App() {
-  const [isAuth, setIsAuth] = useState(()=> false);
+
+  function initialAuth(){
+    return false;
+  }
+  const [isAuth, setIsAuth] = useState(()=>initialAuth());
 
 
 
