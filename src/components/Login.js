@@ -10,10 +10,12 @@ function Login(){
     const email = event.target.email.value;
     const password = event.target.password.value;
     createUserWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      // Signed in 
+    .then((userCredential) => {
+      // Signed up 
+      const user = userCredential.user;
       console.log("successfully signed up!");
-      // ...
+      console.log(user.uid);
+      console.log(user.email);
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -30,9 +32,12 @@ function Login(){
     const email = event.target.signinEmail.value;
     const password = event.target.signinPassword.value;
     signInWithEmailAndPassword(auth, email, password)
-    .then(() => {
+    .then((userCredential) => {
       // Signed in 
+      const user = userCredential.user;
       console.log("Welcome back!");
+      console.log(user.uid);
+      console.log(user.email);
     })
     .catch((error) => {
       const errorCode = error.code;
