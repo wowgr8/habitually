@@ -1,8 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import { auth } from "../firebase";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
-function Login(){
+function Login({isAuth, setIsAuth}){ 
+  let navigate = useNavigate();
+
+  // const [isAuth, setIsAuth] = useState();
 
   // sign up - new user
   const authSignUp = async (event) => {
@@ -13,7 +17,9 @@ function Login(){
     .then((userCredential) => {
       // Signed up 
       const user = userCredential.user;
+      setIsAuth(true);
       console.log("successfully signed up!");
+      console.log(isAuth);
       console.log(user.uid);
       console.log(user.email);
     })
@@ -36,6 +42,8 @@ function Login(){
       // Signed in 
       const user = userCredential.user;
       console.log("Welcome back!");
+      setIsAuth(true);
+      console.log(isAuth);
       console.log(user.uid);
       console.log(user.email);
     })
@@ -51,7 +59,10 @@ function Login(){
   const authSignOut = async (event) => {
     event.preventDefault();
     signOut(auth).then(() => {
+      setIsAuth(false);
+      console.log(isAuth);
       console.log("Till next time!");
+      navigate("/LandingPage");
     }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
