@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+/* used in Header.js*/
+.container {
+  width: 100%; /* this make container fluid*/
+  height: auto;
+  background-color: #FFC; /* this make content background-color*/
+  margin-right: auto; /* this make content center*/
+  margin-left: auto; /* this make content center*/
+  }
