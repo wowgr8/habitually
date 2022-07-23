@@ -20,7 +20,7 @@ function Habit(props){
 
   return(
     <div className="individualHabit">
-      <div className="container">
+      <div className="container1">
         <p>Individual Habit.js </p>
         {/* id is not being read in this component but when it returns back in the HabitList component, it is grabbing the id just fine. -WIP */}
         <div onClick={()=>habitClicked(id)}> 
