@@ -45,3 +45,20 @@
   margin-right: auto; /* this make content center*/
   margin-left: auto; /* this make content center*/
   }
+
+/* for sidebar */
+.sidebar {
+  height: 100%;
+  width: 150px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 40px;
+  background-color: lightblue;
+  }
+  
+  .sidebar div {
+  padding: 8px;
+  font-size: 24px;
+  display: block;
+  }
