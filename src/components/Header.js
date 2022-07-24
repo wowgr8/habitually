@@ -10,8 +10,8 @@ function Header({isAuth, setIsAuth}){
   // const [isAuth, setIsAuth] = useState();
 
   return(
-    <div className="container">
-      <h1>Header app name/logo Placeholder: HABITUALLY</h1>
+    <div className="text-5xl font-extrabold ...">
+      <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">Header app name/logo Placeholder: HABITUALLY</h1>
       {!isAuth 
         ? <>
           <Link to="/Login">Sign up</Link>
