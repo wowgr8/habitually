@@ -28,9 +28,10 @@ function Home({isAuth, setIsAuth}) {
         : ( <>
             <Sidebar />
             {isOpen 
-            ? <Habit setIsOpen={setIsOpen}
-                      isOpen={isOpen}
-                      />
+            ? null
+            // <Habit setIsOpen={setIsOpen}
+            //           isOpen={isOpen}
+            //           />
             : <HabitList setIsOpen={setIsOpen}
                           isOpen={isOpen}
                           />}
