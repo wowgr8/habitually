@@ -3,12 +3,15 @@ import Habit from "./Habit";
 import { collection, updateDoc, doc, get, getDoc, getDocs, setDoc } from "firebase/firestore";
 import { db } from '../firebase';
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
+
 
 function HabitList(props){
   
   const { isOpen, setIsOpen } = props; // Will this be needed here? WIP
   const [isToggle, setIsToggle] = useState(() => false); // dev purposes/ will delete soon
   const [selectedHabit, setSelectedHabit] = useState(() => null); // dev purposes/ will delete soon
+  let navigate = useNavigate(); // To go to edithabit form via onHabitSelection()
 
   const [users, setUsers] = useState([]);
   const usersCollectionRef = collection(db, "user");
@@ -22,11 +25,13 @@ function HabitList(props){
 
   const onHabitSelection = async (id)=> {
     const idRef = doc(db, "user", id);
-    const docSnap = await getDoc(idRef);
-    if (docSnap.exists()) {
-      setSelectedHabit(docSnap.data());
-      console.log("Document data:", docSnap.data());
+    const individualHabit = await getDoc(idRef);
+    if (individualHabit.exists()) {
+      setSelectedHabit(individualHabit.data()); // save the values to selectedHabit so they can be passed and used in EdithabitForm.
+      console.log("Document data:", individualHabit.data());
+      console.log("Document uid:", individualHabit.id); //returns uid successfully
       console.log(selectedHabit)
+      // navigate("/EditHabitForm");
     } else {
       // doc.data() will be undefined in this case
       console.log("No such document!");
