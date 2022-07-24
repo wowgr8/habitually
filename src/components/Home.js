@@ -23,17 +23,18 @@ function Home({isAuth, setIsAuth}) {
 
   return(
     <div>
-      {!isAuth 
-        ? 
-          <LandingPage />
-        : 
-          (isOpen 
+      {!isAuth  
+        ? (<LandingPage />)
+        : ( <>
+            <Sidebar />
+            {isOpen 
             ? <Habit setIsOpen={setIsOpen}
                       isOpen={isOpen}
                       />
             : <HabitList setIsOpen={setIsOpen}
                           isOpen={isOpen}
-                          />)
+                          />}
+            </>)
       }
     </div>
   );
