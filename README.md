@@ -11,7 +11,7 @@
 ![placeholder for images/gifs](link to image)
 
 
-
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 ## Table of Contents
 
 1. [Previews](#previews)
