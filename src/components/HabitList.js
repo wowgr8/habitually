@@ -6,13 +6,12 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
 
-function HabitList(props){
-  
-  const { isOpen, setIsOpen } = props; // Will this be needed here? WIP
-  const [isToggle, setIsToggle] = useState(() => false); // dev purposes/ will delete soon
+function HabitList(){
+
   const [selectedHabit, setSelectedHabit] = useState(null); // dev purposes/ will delete soon
   let navigate = useNavigate(); // To go to edithabit form via onHabitSelection()
 
+  // Render all habits upon rendering page. 
   const [users, setUsers] = useState([]);
   const usersCollectionRef = collection(db, "user");
   useEffect(() => {
@@ -23,20 +22,18 @@ function HabitList(props){
     getUsers()
   }, []);
 
-
-
-
 // with useCallback to extract the function outside useEffect
   const onHabitSelection = useCallback( async (id)=> {
     const idRef = doc(db, "user", id);
     const individualHabit = await getDoc(idRef);
-    console.log(selectedHabit)
-    console.log(selectedHabit)
-    if (individualHabit.exists()) {
+    if (individualHabit.exists()) {     
+      console.log(selectedHabit);
       setSelectedHabit(individualHabit); // save the values to selectedHabit so they can be passed and used in EdithabitForm.
+      console.log(selectedHabit);
       //console.log("Document data:", individualHabit.data());
       console.log("Document uid:", individualHabit.id); //returns uid successfully
       console.log(individualHabit.data(), "inhabitselection")
+      console.log(selectedHabit, "in ()", selectedHabit.id);
       // navigate("/EditHabitForm");
     } else {
       console.log("No such document!");
@@ -46,9 +43,10 @@ function HabitList(props){
 
   useEffect(() => {
     onHabitSelection()
-    console.log(selectedHabit, "in useeffect", selectedHabit.data());
-
-  },[selectedHabit]) // dependency could be [selectedHabit] if async function is used in useEffect?
+    console.log("useEffect")
+    // First render is always null only after double click will .id and data()show: console.log(selectedHabit, "in useeffect", selectedHabit.id);
+    // if you implement the whole async function inside of useEffect.. and connect it to another function that's used in onClick you may be able to fix it?
+  },[onHabitSelection]) // dependency could be [selectedHabit] if async function is used in useEffect?
 
   return(
     <div className="habitLoop">
