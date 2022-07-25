@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { auth } from "../firebase";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 function Login({isAuth, setIsAuth}){ 
@@ -56,6 +56,7 @@ function Login({isAuth, setIsAuth}){
     });
   }
 
+  // temporarily here for dev purposes. WIll probably keep in sidebar
   const authSignOut = async (event) => {
     event.preventDefault();
     signOut(auth).then(() => {
@@ -73,35 +74,117 @@ function Login({isAuth, setIsAuth}){
   }
 
   return(
-    <div className="App-login">
-      <h1>Sign up</h1>
-      <form onSubmit={authSignUp}>
-        <input
-          type='text'
-          name='email'
-          placeholder='email' />
-        <input
-          type='password'
-          name='password'
-          placeholder='Password' />
-        <button type='submit'>Sign up</button>
-      </form>
-      <h1>Sign In</h1>
-      <form onSubmit={authSignIn}>
-        <input
-          type='text'
-          name='signinEmail'
-          placeholder='email' />
-        <input
-          type='password'
-          name='signinPassword'
-          placeholder='Password' />
-        <button type='submit'>Sign in</button>
-      </form>
-      <h1>Sign Out</h1>
-      <button onClick={authSignOut}>Sign out</button>
+    <div className="md:col-span-2 sm:col-span-3 lg:col-span-1 ml-auto lg:py-2.5 2xl:w-[80%] mt-40">
+      <div className="h-full space-y-6 rounded-xl border border-gray-200 bg-white py-8 px-6 2xl:w-[95%]">
+        <div className="bg-white shadow-md rounded px-8 pt-16 pb-18 mb-4 flex flex-col">
+          <form onSubmit={authSignUp}>
+            <div className="mb-4">
+              <label className="block text-grey-darker text-sm font-bold mb-2" for="username">
+                Email
+              </label>
+              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" 
+                id="email" 
+                type="text" 
+                placeholder="email" />              
+            </div>
+
+            <div className="mb-6">
+              <label className="block text-grey-darker text-sm font-bold mb-2" for="password">
+                Password
+              </label>
+              <input className="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3" 
+                id="password" 
+                type="password" 
+                placeholder="******************" />
+              <p className="text-red text-xs italic">Please choose a password.</p>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <button onSubmit={authSignUp} className="bg-blue-500 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded" type="submit">
+                Sign up
+              </button>
+            </div>
+          </form>
+
+
+          <form onSubmit={authSignIn}>
+            <div className="mb-4">
+              <label className="block text-grey-darker text-sm font-bold mb-2" for="username">
+                Email
+              </label>
+              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" 
+                id="signinemail" 
+                name='signinEmail'
+                type="text" 
+                placeholder="email" />              
+            </div>
+
+            <div className="mb-6">
+              <label className="block text-grey-darker text-sm font-bold mb-2" for="password">
+                Password
+              </label>
+              <input className="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3" 
+                id="signinpassword" 
+                name='signinPassword'
+                type="password" 
+                placeholder="******************" />
+              <p className="text-red text-xs italic">Please choose a password.</p>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <button onSubmit={authSignIn} class="mt-4 text-sm" type="submit">
+                <p >Already Have An Account? <span class="underline cursor-pointer"> Sign In</span>
+                </p>
+              </button>
+            </div>
+          </form>
+
+
+          <form>
+            <div className="flex items-center justify-between">
+              <button onClick={authSignOut} className="bg-blue-500 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded" >Sign out</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
+
+
+
+
   );
 }
 
 export default Login;
+
+// Pre-Tailwind
+      // <div className="px-6 pt-6 2xl:container">
+      //   <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-1 md:container md:mx-auto">
+      //       <h1>Sign up</h1>
+      //       <form onSubmit={authSignUp}>
+      //         <input
+      //           type='text'
+      //           name='email'
+      //           placeholder='email' />
+      //         <input
+      //           type='password'
+      //           name='password'
+      //           placeholder='Password' />
+      //         <button type='submit'>Sign up</button>
+      //       </form>
+      //       <h1>Sign In</h1>
+      //       <form onSubmit={authSignIn}>
+      //         <input
+      //           type='text'
+      //           name='signinEmail'
+      //           placeholder='email' />
+      //         <input
+      //           type='password'
+      //           name='signinPassword'
+      //           placeholder='Password' />
+      //         <button type='submit'>Sign in</button>
+      //       </form>
+      //       <h1>Sign Out</h1>
+      //       <button onClick={authSignOut}>Sign out</button>
+      //     </div>
+      // </div>
