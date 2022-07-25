@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from "react";
 import Habit from "./Habit";
 import { collection, updateDoc, doc, get, getDoc, getDocs, setDoc } from "firebase/firestore";
-import { db } from '../firebase';
+import { db, auth } from '../firebase';
+import { useNavigate } from "react-router-dom";
+import {  signOut } from "firebase/auth";
 // import for habitlist if we choose to use
 
-function SideBar(){
+function SideBar({isAuth, setIsAuth}){
   // placeholder for function handling search
   const [users, setUsers] = useState([]);
   const usersCollectionRef = collection(db, "user");
@@ -16,10 +18,28 @@ function SideBar(){
     getUsers()
   }, []);
   
-  const onHabitSelection = async (id)=> {}
+  // const onHabitSelection = async (id)=> {}  WIP
+
+  let navigate = useNavigate();
+
+  const authSignOut = async (event) => {
+    event.preventDefault();
+    signOut(auth).then(() => {
+      setIsAuth(false);
+      console.log(isAuth);
+      console.log("Till next time!");
+      navigate("/LandingPage");
+    }).catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log("failed SignOut");
+      console.log(errorCode);
+      console.log(errorMessage);
+    });
+  }
 
   return(
-    <div classNameName="sidebarrr">
+    <div className="sidebarrr">
       <aside className="ml-[-100%] fixed z-10 top-0 pb-3 px-6 w-full flex flex-col justify-between h-screen border-r bg-white transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]">
         <div>
         <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">HABITUALLY</h1>
@@ -101,7 +121,7 @@ function SideBar(){
           </ul>
         </div>
         <div className="px-6 -mx-6 pt-4 flex justify-between items-center border-t">
-            <button className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
+            <button onClick={authSignOut} className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                 </svg>
