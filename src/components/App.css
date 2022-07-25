@@ -38,16 +38,16 @@
 }
 
 /* used in Header.js*/
-.container {
-  width: 100%; /* this make container fluid*/
+/* .container {
+  width: 100%; 
   height: auto;
-  background-color: #FFC; /* this make content background-color*/
-  margin-right: auto; /* this make content center*/
-  margin-left: auto; /* this make content center*/
-  }
+  background-color: #FFC;
+  margin-right: auto;
+  margin-left: auto; 
+  } */
 
 /* for sidebar */
-.sidebar {
+/* .sidebar {
   height: 100%;
   width: 150px;
   position: fixed;
@@ -59,31 +59,31 @@
   
   .sidebar div {
   padding: 8px;
-  /* font-size: 20px; */
+
   display: block;
-  }
+  } */
 
   /* Temp FOR list in SIDEBAR*/
-.cardHabitSidebar {
-  /* Add shadows to create the "card" effect */
+/* .cardHabitSidebar {
+  Add shadows to create the "card" effect
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  border-radius: 5px; /* 5px rounded corners */
+  border-radius: 5px; 
   font-size: 18px;
-}
+} */
 
 /* On mouse-over, add a deeper shadow */
-.cardHabitSidebar:hover {
+/* .cardHabitSidebar:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
+} */
 
 /* Add some padding inside the card container */
-.containerHabitSidebar {
+/* .containerHabitSidebar {
   padding: 2px 16px;
   width:25px;
   height: 40px;
-  /* font-size: 8px; */
-}
+
+} */
 
 
 
@@ -93,22 +93,22 @@
 
 
 /* Temp FOR IND HABITS being looped in list*/
-.cardHabit {
-  /* Add shadows to create the "card" effect */
+/* Add shadows to create the "card" effect */
+/* .cardHabit {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  border-radius: 5px; /* 5px rounded corners */
-}
+  border-radius: 5px; 
+} */
 
 /* On mouse-over, add a deeper shadow */
-.cardHabit:hover {
+/* .cardHabit:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
+} */
 
 /* Add some padding inside the card container */
-.containerHabit {
+/* .containerHabit {
   padding: 2px 16px;
-}
+} */
 
 
 
