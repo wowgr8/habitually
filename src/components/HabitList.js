@@ -49,7 +49,36 @@ function HabitList(){
 
   return(
     <div className="habitLoop">
-      <p>habitlist.js</p>
+          {users.map((user) => {
+            return(
+              <div>
+                  <Habit
+                    habitClicked={onHabitSelection}
+                    id={user.id}
+                    habitName={user.habitName}
+                    habitSummary={user.habitSummary}
+                    habitTimeFrame={user.habitTimeFrame}
+                    />
+                  <hr></hr>
+              </div>
+            )
+          })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {/* <p>habitlist.js</p>
       <div className="row">
         {users.map((user) => {
           return(
@@ -67,7 +96,7 @@ function HabitList(){
             </div>
           )
         })}
-      </div>
+      </div> */}
     </div>
   )
 }
