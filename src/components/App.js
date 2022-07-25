@@ -13,6 +13,7 @@ import {
 import EditHabitForm from './EditHabitForm';
 import NewHabitForm from './NewHabitForm';
 import HabitList from './HabitList';
+import SideBar from './Sidebar';
 
 
 
@@ -27,8 +28,9 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
+      <div >
         <Header isAuth={isAuth} setIsAuth={setIsAuth}/>
+        <SideBar isAuth={isAuth} setIsAuth={setIsAuth}/>
         <Routes>
           <Route path="/LandingPage" element={<LandingPage isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
           <Route path="/Login" element={<Login isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
