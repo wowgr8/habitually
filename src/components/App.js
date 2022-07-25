@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import EditHabitForm from './EditHabitForm';
 import NewHabitForm from './NewHabitForm';
+import HabitList from './HabitList';
 
 
 
@@ -21,7 +22,7 @@ function App() {
     return false;
   }
   const [isAuth, setIsAuth] = useState(()=>initialAuth());
-
+  //const [selectedHabit, setSelectedHabit] = useState(null);
 
 
   return (
@@ -31,6 +32,10 @@ function App() {
         <Routes>
           <Route path="/LandingPage" element={<LandingPage isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
           <Route path="/Login" element={<Login isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
+          <Route path="/HabitList" element={<HabitList
+                                                        //selectedHabit={selectedHabit} setSelectedHabit={setSelectedHabit} 
+                                                        
+                                                        />}/>
           <Route path ="/NewHabitForm" element={<NewHabitForm isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
           <Route path ="/EditHabitForm" element={<EditHabitForm isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
           <Route path ="/" element={<Home isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
