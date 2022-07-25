@@ -1,8 +1,7 @@
 import { React, useState, useEffect, useCallback } from "react";
 import Habit from "./Habit";
-import { collection, updateDoc, doc, get, getDoc, getDocs, setDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from '../firebase';
-import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
 
@@ -20,9 +19,9 @@ function HabitList(){
       setUsers(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
     }
     getUsers()
-  }, []);
+  }, []); // usersCollectionRef should be added? Doesnt seem to hurt. Check again when creating and deleting habits.
 
-// with useCallback to extract the function outside useEffect
+// Uses useCallback to extract the function outside useEffect
   const onHabitSelection = useCallback( async (id)=> {
     const idRef = doc(db, "user", id);
     const individualHabit = await getDoc(idRef);
