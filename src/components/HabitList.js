@@ -21,7 +21,7 @@ function HabitList(){
     getUsers()
   }, []); // usersCollectionRef should be added? Doesnt seem to hurt. Check again when creating and deleting habits.
 
-// Uses useCallback to extract the function outside useEffect
+// Uses useCallback to extract the function outside useEffect :source - https://devtrium.com/posts/async-functions-useeffect
   const onHabitSelection = useCallback( async (id)=> {
     const idRef = doc(db, "user", id);
     const individualHabit = await getDoc(idRef);
