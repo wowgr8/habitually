@@ -10,37 +10,43 @@ function Header({isAuth, setIsAuth}){
   // const [isAuth, setIsAuth] = useState();
 
   return(
-    <div className="text-5xl font-extrabold ...">
-      <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">Header app name/logo Placeholder: HABITUALLY</h1>
-      {!isAuth 
-        ? <>
-          <Link to="/Login">Sign up</Link>
-          </>
-        : (
-          // <>
-          //   <Link to="/">Home</Link>
-          //   <Link to="/Login">Sign In</Link>
-          // </>
-          <div>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/Login">Sign In</Link>
-              </li>
-              <div>
-                <SearchBar />
+    <nav class="font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-4 px-6 bg-white shadow sm:items-baseline w-full">
+        <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">HABITUALLY</h1>
+
+        {!isAuth 
+          ? <>
+              <div class="mb-2 sm:mb-0">
+              {/* <a href="/home" class="text-2xl no-underline text-grey-darkest hover:text-blue-dark">Home</a> */}
+                <Link class="text-2xl no-underline text-grey-darkest hover:text-blue-dark" to="/Login">Sign up</Link>
               </div>
-            </ul>
-          </div>
+            
+            </>
+          : (
+            // <>
+            //   <Link to="/">Home</Link>
+            //   <Link to="/Login">Sign In</Link>
+            // </>
+            <div>
+          
+                <div class="mb-2 sm:mb-0">
+                  <Link class="text-2xl no-underline text-grey-darkest hover:text-blue-dark" to="/">Home</Link>
+                </div>
+            
+                  <Link class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2" to="/Login">Sign In</Link>
+              
+              
+                  {/* <SearchBar /> */}
+                
+            
+            </div>
 
 
-          )}
+            )}
 
-      {/* Temp here for dev purposes */}
-      {/* <LandingPage/>  */}
-    </div>
+        {/* Temp here for dev purposes */}
+        {/* <LandingPage/>  */}
+
+    </nav>
   );
 }
 
