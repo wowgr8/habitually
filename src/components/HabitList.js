@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useCallback } from "react";
 import Habit from "./Habit";
 import { collection, updateDoc, doc, get, getDoc, getDocs, setDoc } from "firebase/firestore";
 import { db } from '../firebase';
@@ -10,7 +10,7 @@ function HabitList(props){
   
   const { isOpen, setIsOpen } = props; // Will this be needed here? WIP
   const [isToggle, setIsToggle] = useState(() => false); // dev purposes/ will delete soon
-  const [selectedHabit, setSelectedHabit] = useState(() => null); // dev purposes/ will delete soon
+  const [selectedHabit, setSelectedHabit] = useState(null); // dev purposes/ will delete soon
   let navigate = useNavigate(); // To go to edithabit form via onHabitSelection()
 
   const [users, setUsers] = useState([]);
@@ -23,37 +23,32 @@ function HabitList(props){
     getUsers()
   }, []);
 
-  const onHabitSelection = async (id)=> {
+
+
+
+// with useCallback to extract the function outside useEffect
+  const onHabitSelection = useCallback( async (id)=> {
     const idRef = doc(db, "user", id);
     const individualHabit = await getDoc(idRef);
+    console.log(selectedHabit)
+    console.log(selectedHabit)
     if (individualHabit.exists()) {
-      setSelectedHabit(individualHabit.data()); // save the values to selectedHabit so they can be passed and used in EdithabitForm.
-      console.log("Document data:", individualHabit.data());
+      setSelectedHabit(individualHabit); // save the values to selectedHabit so they can be passed and used in EdithabitForm.
+      //console.log("Document data:", individualHabit.data());
       console.log("Document uid:", individualHabit.id); //returns uid successfully
-      console.log(selectedHabit)
+      console.log(individualHabit.data(), "inhabitselection")
       // navigate("/EditHabitForm");
     } else {
-      // doc.data() will be undefined in this case
       console.log("No such document!");
     }
-    
-    // idRef.then((habit) => { 
-    //   const selectedHabit = {                     
-    //     habitName: habit.get("habitName"),                
-    //     habitSummary: habit.get("habitSummary"),          
-    //     habitTimeFrame: habit.get("habitTimeFrame"),               
-    //     id: habit.id
-    //   }
-    //   setSelectedHabit(selectedHabit);
-    //   console.log(selectedHabit)
-    // })
-  }
+  }, [selectedHabit])
 
 
-  const goTohabit = (e)=> {
-    e.preventDefault();
-    setIsToggle(!isToggle);
-  }
+  useEffect(() => {
+    onHabitSelection()
+    console.log(selectedHabit, "in useeffect", selectedHabit.data());
+
+  },[selectedHabit]) // dependency could be [selectedHabit] if async function is used in useEffect?
 
   return(
     <div className="habitLoop">
@@ -76,72 +71,25 @@ function HabitList(props){
           )
         })}
       </div>
-      <div>
-        <button onClick={goTohabit}>Go to habit.js</button>
-      </div>
     </div>
   )
 }
 
 export default HabitList;
-// either let home.js handle toggle to ind. habit.js so that you dont have two <habit> tags here. or
-// 
 
-
-
-
-
-
-// This return works 07/23/22 but why are we rendering habit conditionally two times?
-// we only need to see habit list with a loop and child component with habit key:values passed as props. 
-// return(
-//   <div className="habitListView">
-//     <div className="render">
-//       {isToggle 
-//         ? <Habit /> 
-//         : <div className="habitLoop">
-//             <p>habitlist.js</p>
-//             <div className="row">
-//               {users.map((user) => {
-//                 return(
-
-//                     <div className="col mb-2">
-//                       <Habit
-//                         habitClicked={onHabitSelection}
-//                         id={user.id}
-//                         habitName={user.habitName}
-//                         habitSummary={user.habitSummary}
-//                         habitTimeFrame={user.habitTimeFrame}
-//                         />
-//                     <hr></hr>
-//                     </div>
-//                 )
-//               })}
-//             </div>
-//           </div>
-//       }
-//     </div>
-//     <div>
-//       <button onClick={goTohabit}>Go to habit.js</button>
-//     </div>
-//   </div>
-// )
-
-
-
-
-
-// DOES NOT WORK
+  // OG - kinda works... needs help from useEffect. Does not save selectedHabit as document. Always renders as null.
   // const onHabitSelection = async (id)=> {
-  //   // e.preventDefault();
-  //   // const selectedHabit = usersCollectionRef.filter(doc.id === id)[0];
-
-  //   setIsToggle(!isToggle);
-  //   console.log("Toggle to habit.js successful");
   //   const idRef = doc(db, "user", id);
-  //   console.log("idRef = " + idRef)
-  //   const selectedHabit = await getDoc(idRef === id); // issue lies within here.... something here is not tapping into the db correctly
-  //   // const selectedHabit = () => usersCollectionRef.get(users).filter(doc => doc.id === id)[0]; // WIP on this line. 
-  //   console.log("selectedHabit success " + selectedHabit);
-  //   console.log(selectedHabit);
+  //   const individualHabit = await getDoc(idRef);
+  //   console.log(selectedHabit)
+  //   console.log(selectedHabit)
+  //   if (individualHabit.exists()) {
+    //   setSelectedHabit(individualHabit); // save the values to selectedHabit so they can be passed and used in EdithabitForm.
+  //     //console.log("Document data:", individualHabit.data());
+  //     console.log("Document uid:", individualHabit.id); //returns uid successfully
+  //     console.log(individualHabit.data(), "inhabitselection")
+  //     // navigate("/EditHabitForm");
+  //   } else {
+  //     console.log("No such document!");
+  //   }
   // }
