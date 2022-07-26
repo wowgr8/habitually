@@ -17,7 +17,7 @@ function EditHabitForm (props){
                         habitTimeFrame: newTimeFrame, 
                       }; 
     // setIsOpen(!isOpen);
-    await updateDoc(doc(db, "user", id), newFields) // this method works when id is replaced with hardcoded id ("7wTfjkYOarXknMqthXug"). This should work as-is after implementation of habitlist->habit.js ***by id*** and edit button with handler to bring you to this component ***by id***
+    await updateDoc(doc(db, "user", id), newFields) // this method works when id is replaced with hardcoded id ("7wTfjkYOarXknMqthXug"). Needs to be set up to take in useState/context from onHabitSelection() in habitlist.js
   }
 
   const deleteHabit = async(id) =>{
@@ -26,18 +26,20 @@ function EditHabitForm (props){
   }
   
   return(
-    <div>
-      <h2>EditHabitForm/REUSABLEFORM placeholder</h2>
-      <ReusableForm 
-        onSubmissionHandler = {updateHabit}
-        buttonText="UPDATE!"
-        setNewHabit = {setNewHabit}
-        setNewSummary = {setNewSummary}
-        setNewTimeFrame = {setNewTimeFrame}
-        />
-        <button onClick={()=>deleteHabit()}>
-          Delete
-        </button>
+    <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]" >
+      <div className="px-6 pt-6 2xl:container">
+        {/* could this use a div with line 30 styling? WIP */}
+        <ReusableForm 
+          onSubmissionHandler = {updateHabit}
+          buttonText="UPDATE!"
+          setNewHabit = {setNewHabit}
+          setNewSummary = {setNewSummary}
+          setNewTimeFrame = {setNewTimeFrame}
+          />
+          <button onClick={()=>deleteHabit()}>
+            Delete
+          </button>
+      </div>
     </div>
   )
 }
