@@ -22,28 +22,28 @@ function Home({isAuth, setIsAuth}) {
 
 
   return(
-    <div >
+    <div className="homeContainer ">
       {!isAuth  
         ? (<>
-            <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
-              <div class="px-6 pt-6 2xl:container">
-                <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div >
+              <div >
+                {/* <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"> */}
                   <LandingPage />
-                </div>
+                {/* </div> */}
               </div>
             </div>
           </>)
 
         : ( <>
             <Sidebar />
-            <div class="px-6 pt-6 2xl:container">
-              <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div>
+              {/* <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"> */}
               {isOpen 
                 ? null
                 : <HabitList setIsOpen={setIsOpen}
                               isOpen={isOpen}
                               />}
-              </div>
+              {/* </div> */}
             </div>
 
           </>)
