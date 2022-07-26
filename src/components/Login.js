@@ -74,8 +74,8 @@ function Login({isAuth, setIsAuth}){
   }
 
   return(
-    <div className="md:col-span-2 sm:col-span-3 lg:col-span-1 ml-auto lg:py-2.5 2xl:w-[80%] mt-40">
-      <div className="h-full space-y-6 rounded-xl border border-gray-200 bg-white py-8 px-6 2xl:w-[95%]">
+    <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
+      <div className="px-6 pt-6 2xl:container">
         <div className="bg-white shadow-md rounded px-8 pt-16 pb-18 mb-4 flex flex-col">
           <form onSubmit={authSignUp}>
             <div className="mb-4">
@@ -137,6 +137,24 @@ function Login({isAuth, setIsAuth}){
                 </p>
               </button>
             </div>
+            {/* add these to form.... perhaps conditionally render em.... */}
+            {/* <hr class="mb-6 border-t" />
+                <div class="text-center">
+                  <a
+                    class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+                    href="#"
+                  >
+                    Forgot Password?
+                  </a>
+                </div>
+                <div class="text-center">
+                  <a
+                    class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+                    href="./index.html"
+                  >
+                    Already have an account? Login!
+                  </a>
+                </div> */}
           </form>
 
 
