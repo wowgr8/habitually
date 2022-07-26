@@ -7,8 +7,12 @@ function HabitDetail(){
 
   return(
     <React.Fragment>
-      <h2>HabitDetail placeholder</h2>
-      <p>placeholder for details: HabitName, HabitID, HabitSummary, HabitTimeOpen, HabitTimeGoal, etc.</p>
+      <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]" >
+        <div className="px-6 pt-6 2xl:container">
+          <h2>HabitDetail placeholder</h2>
+          <p>placeholder for details: HabitName, HabitID, HabitSummary, HabitTimeOpen, HabitTimeGoal, etc.</p>
+        </div>
+      </div>
     </React.Fragment>
   )
 
