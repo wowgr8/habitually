@@ -2,7 +2,7 @@ import { React, useState, useEffect, useCallback, useLayoutEffect } from "react"
 import Habit from "./Habit";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from '../firebase';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import EditHabitForm from "./EditHabitForm";
 
 
@@ -55,9 +55,14 @@ function HabitList(){
     console.log("End of useEffect()")
   },[onHabitSelection]) 
   
+
+
+
   return(
     <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]" id="habitListDiv">
       <div className="px-6 pt-6 2xl:container">
+        {/* Conditionally render this link and list if users.length !== 0, Else navigate to addNewHabitForm.js. */}
+      <p><Link to="/NewHabitForm">Add New Habit</Link></p> 
         {users.map((user) => {
           return(
             <div className="px-6 pt-6 2xl:container">
