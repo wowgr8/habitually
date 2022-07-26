@@ -3,23 +3,24 @@ import ReusableForm from "./ReusableForm";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from '../firebase';
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
-function NewHabitForm(props){
+function NewHabitForm(){
   const [newHabit, setNewHabit] = useState(() => "")
   const [newSummary, setNewSummary] = useState(() =>"")
   const [newTimeFrame, setNewTimeFrame] = useState(() =>"")
 
-  const { isOpen, setIsOpen } = props;
+  let navigate = useNavigate(); 
 
   const usersCollectionRef = collection(db, "user");
 
   const createUser = async (e) => {
     e.preventDefault();
-    setIsOpen(!isOpen);
     await addDoc(usersCollectionRef, { habitName: newHabit, 
                                         habitSummary: newSummary, 
                                         habitTimeFrame: newTimeFrame 
                                       });
+    navigate("/HabitList");
   }
 
   return(
