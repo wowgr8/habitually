@@ -34,9 +34,9 @@ function LandingPage() { //{isAuth, setIsAuth}
   useEffect(()=>setIsAuth(isAuth))
 
   return (
-    <div className="LandingPage">
-      <div className="ml-auto lg:py-2.5 2xl:w-[65%] mt-40 ml-90  my-30 justify-center">
-        {/* <div className="space-y-6 rounded-xl border border-gray-200 bg-white py-8 px-6 "> */}
+    <div id="landingPageDiv" className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
+      <div className="px-6 pt-6 2xl:container">
+        {/* fix form so that it is more responsive... remove column so it doesnt float right */}
           <div className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white ml-60">
             <div className="flex flex-col min-h-full">
               <div className="px-6 py-4 border-b">
