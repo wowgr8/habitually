@@ -23,15 +23,17 @@ function NewHabitForm(props){
   }
 
   return(
-    <div>
-      <h2>ADD NEW HABIT </h2>      
-      <ReusableForm 
-        onSubmissionHandler = {createUser}
-        buttonText="CREATE!"
-        setNewHabit = {setNewHabit}
-        setNewSummary = {setNewSummary}
-        setNewTimeFrame = {setNewTimeFrame}
-        />
+    <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]" >
+      <div className="px-6 pt-6 2xl:container">
+        <h2>ADD NEW HABIT </h2>      
+        <ReusableForm 
+          onSubmissionHandler = {createUser}
+          buttonText="CREATE!"
+          setNewHabit = {setNewHabit}
+          setNewSummary = {setNewSummary}
+          setNewTimeFrame = {setNewTimeFrame}
+          />
+      </div>
     </div>
   );
 }
