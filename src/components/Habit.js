@@ -6,10 +6,13 @@ function Habit(props){
   const { habitClicked, id, habitName, habitSummary, habitTimeFrame } = props
 
   return(
+    // the conatiner is being set in habitList.js 
     <section>
-      <ul className="md:col-span-2 sm:col-span-3 lg:col-span-1 ml-auto lg:py-2.5 2xl:w-[50%] mt-25">
+      {/* add nice spacing between list in HabitList view: md:col-span-2 sm:col-span-3 lg:col-span-1 ml-auto lg:py-2.5 2xl:w-[50%] mt-25 */}
+      <ul className="">
         <li x-for="">
-          <a  className="bg-white shadow-md rounded mb-4 flex flex-col">
+          {/* adds to the nice spacing when rendered back into HabitList.js: bg-white shadow-md rounded mb-4 flex flex-col */}
+          <a  className="">
             <dl className="">
               <div onClick={()=>habitClicked(id)} className=" items-center space-x-4 rounded-xl text-white bg-gradient-to-r from-sky-600 to-cyan-400">
                 <h1>Id: {id}</h1>
