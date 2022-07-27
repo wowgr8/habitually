@@ -1,12 +1,13 @@
-import React, {useState} from "react";
+import React, { useContext } from "react";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
+import { Context } from '../utils/Context';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
-function Login({isAuth, setIsAuth}){ 
+function Login(){ 
   let navigate = useNavigate();
 
-  // const [isAuth, setIsAuth] = useState();
+  const { isAuth, setIsAuth, setSelectedHabit } = useContext(Context);
 
   // sign up - new user
   const authSignUp = async (event) => {
@@ -43,6 +44,8 @@ function Login({isAuth, setIsAuth}){
       const user = userCredential.user;
       console.log("Welcome back!");
       setIsAuth(true);
+      setSelectedHabit();
+      console.log("SIGN IN CALLED ")
       console.log(isAuth);
       console.log(user.uid);
       console.log(user.email);
