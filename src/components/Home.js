@@ -1,5 +1,5 @@
 // Will be highest component holding state
-import { React, useEffect, useState, isLoaded } from "react";
+import { React, useContext, useState, isLoaded } from "react";
 import Header from "./Header"; // Parent to searchbar.js & Login.js
 import Sidebar from "./Sidebar"; // Parent to Habit.js
 import HabitList from "./HabitList"; // Parent to Habit.js
@@ -13,11 +13,13 @@ import { onAuthStateChanged } from "firebase/auth";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { collection, getDocs, updateDoc, addDoc } from "firebase/firestore";
 import LandingPage from "./LandingPage";
+import { Context } from '../utils/Context';
 
-function Home({isAuth, setIsAuth}) {
+function Home() {
   //This users/setUsers and userCollectionRef will need to be moved to HabitList.js
-  const [users, setUsers] = useState([]);
-  const [isOpen, setIsOpen] = useState(() => false); // Will handle toggling visible component - atm being passed into components as props.
+  //const [users, setUsers] = useState([]);
+  // const [isOpen, setIsOpen] = useState(() => false); // Will handle toggling visible component - atm being passed into components as props.
+  const { isAuth, setIsAuth, isOpen, setIsOpen } = useContext(Context); 
   let navigate = useNavigate();
 
 
@@ -40,8 +42,9 @@ function Home({isAuth, setIsAuth}) {
               {/* <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"> */}
               {isOpen 
                 ? null
-                : <HabitList setIsOpen={setIsOpen}
-                              isOpen={isOpen}
+                : <HabitList 
+                              // setIsOpen={setIsOpen}  
+                              // isOpen={isOpen}
                               />}
               {/* </div> */}
             </div>
