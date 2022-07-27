@@ -1,15 +1,18 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import Habit from "./Habit";
 import { collection, updateDoc, doc, get, getDoc, getDocs, setDoc } from "firebase/firestore";
 import { db, auth } from '../firebase';
 import { useNavigate } from "react-router-dom";
 import {  signOut } from "firebase/auth";
+import { Context } from '../utils/Context';
 // import for habitlist if we choose to use
 
-function SideBar({isAuth, setIsAuth}){
+function SideBar(){
   // placeholder for function handling search
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
+  const { users, setUsers, isAuth, setIsAuth } = useContext(Context);
   const usersCollectionRef = collection(db, "user");
+  
   useEffect(() => {
     const getUsers = async() => {
       const data = await getDocs(usersCollectionRef);
