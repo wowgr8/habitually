@@ -1,14 +1,19 @@
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
 import ReusableForm from "./ReusableForm";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from '../firebase';
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import { Context } from '../utils/Context';
 
 function NewHabitForm(){
-  const [newHabit, setNewHabit] = useState(() => "")
-  const [newSummary, setNewSummary] = useState(() =>"")
-  const [newTimeFrame, setNewTimeFrame] = useState(() =>"")
+  // const [newHabit, setNewHabit] = useState(() => "")
+  // const [newSummary, setNewSummary] = useState(() =>"")
+  // const [newTimeFrame, setNewTimeFrame] = useState(() =>"")
+  const { newHabit, setNewHabit,
+          newSummary, setNewSummary,
+          newTimeFrame, setNewTimeFrame
+        } = useContext(Context);
 
   let navigate = useNavigate(); 
 
