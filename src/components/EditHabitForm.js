@@ -6,10 +6,14 @@ import { Context } from '../utils/Context';
 import { useNavigate } from "react-router-dom";
 
 function EditHabitForm (){
-  const [newHabit, setNewHabit] = useState(() => "")
-  const [newSummary, setNewSummary] = useState(() =>"")
-  const [newTimeFrame, setNewTimeFrame] = useState(() =>"")
-  const { selectedHabit, setSelectedHabit } = useContext(Context);
+  // const [newHabit, setNewHabit] = useState(() => "")
+  // const [newSummary, setNewSummary] = useState(() =>"")
+  // const [newTimeFrame, setNewTimeFrame] = useState(() =>"")
+  const { newHabit, setNewHabit,
+          newSummary, setNewSummary,
+          newTimeFrame, setNewTimeFrame,
+          selectedHabit, setSelectedHabit,
+        } = useContext(Context);
 
   let navigate = useNavigate();
 
