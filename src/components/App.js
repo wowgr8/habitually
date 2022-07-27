@@ -1,48 +1,44 @@
+import React, { useState, useContext } from "react";
 import './App.css';
 import Home from './Home';
 import Login from "./Login";
 import Header from './Header';
-import React, { useState } from "react";
 import LandingPage from './LandingPage';
+import EditHabitForm from './EditHabitForm';
+import NewHabitForm from './NewHabitForm';
+import HabitList from './HabitList';
+import SideBar from './Sidebar';
+import { Context } from '../utils/Context';
 // import Material UI for styling
 import { 
   BrowserRouter as Router,
   Routes,
   Route 
-} from "react-router-dom";
-import EditHabitForm from './EditHabitForm';
-import NewHabitForm from './NewHabitForm';
-import HabitList from './HabitList';
-import SideBar from './Sidebar';
+  } from "react-router-dom";
+
 
 
 
 function App() {
-
-  function initialAuth(){
-    return false;
-  }
-  const [isAuth, setIsAuth] = useState(()=>initialAuth());
-  //const [selectedHabit, setSelectedHabit] = useState(null);
-
+  // Will this be need after all? If so, move to context.js
+  // function initialAuth(){
+  //   return false;
+  // }
+  // const { isAuth, setIsAuth } = useContext(Context); 
 
   return (
     <Router>
-      <div >
-        <Header isAuth={isAuth} setIsAuth={setIsAuth}/>
-        <SideBar isAuth={isAuth} setIsAuth={setIsAuth}/>
+        <Header />
+        {/* sidebar will need to render after auth is true. so it will need to be be moved into routes and then conditionally rendered  */}
+        <SideBar /> 
         <Routes>
-          <Route path="/LandingPage" element={<LandingPage isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
-          <Route path="/Login" element={<Login isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
-          <Route path="/HabitList" element={<HabitList
-                                                        //selectedHabit={selectedHabit} setSelectedHabit={setSelectedHabit} 
-                                                        
-                                                        />}/>
-          <Route path ="/NewHabitForm" element={<NewHabitForm isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
-          <Route path ="/EditHabitForm" element={<EditHabitForm isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
-          <Route path ="/" element={<Home isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
+          <Route path="/LandingPage" element={<LandingPage />}/>
+          <Route path="/Login" element={<Login />}/>
+          <Route path="/HabitList" element={<HabitList />}/>
+          <Route path ="/NewHabitForm" element={<NewHabitForm />}/>
+          <Route path ="/EditHabitForm" element={<EditHabitForm />}/>
+          <Route path ="/" element={<Home />}/>
         </Routes>
-      </div>
     </Router>
   );
 }
