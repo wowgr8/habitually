@@ -25,6 +25,7 @@ function EditHabitForm (){
                         habitTimeFrame: newTimeFrame, 
                       }; 
     await updateDoc(doc(db, "user", selectedHabit), {...newFields}) 
+    setSelectedHabit(selectedHabit); // updates placeholders in reusable form.
 
     // call function which renders button to go back home(HabitLIst), giving the user the option to stay and edit the same habit once again.
     // setSelectedHabit(); Only needed if navigating back to HabitLIst.
