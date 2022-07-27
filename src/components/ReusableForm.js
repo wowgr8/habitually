@@ -1,12 +1,10 @@
-import { React, useContext } from "react";
+import { React, useContext, useState } from "react";
 import { Context } from '../utils/Context';
 import PropTypes from "prop-types";
 
 function ReusableForm(props){
 
-  // Deconstructed useState setNew's; being passed down from NewHabitForm.js
-  // const { setNewHabit, setNewSummary, setNewTimeFrame } = props;
-  const { setNewHabit, setNewSummary, setNewTimeFrame } = useContext(Context);
+  const { setNewHabit, setNewSummary, setNewTimeFrame, selectedHabit,  habitBody } = useContext(Context);
 
   return(
   <div className="">
@@ -37,7 +35,8 @@ function ReusableForm(props){
                       id="habitName"
                       name="habitName"
                       type="text"
-                      placeholder="Habit Name" onChange={(e) => {setNewHabit(e.target.value);}}/>
+                      placeholder={ selectedHabit ? habitBody.habitName : "Habit Name" } 
+                      onChange={(e) => {setNewHabit(e.target.value);}}/>
                   </div>
                   <div class="md:ml-2">
                     <label class="block mb-2 text-sm font-bold text-gray-700" for="lastName">
@@ -48,7 +47,8 @@ function ReusableForm(props){
                       id="habitTimeFrame"
                       name="habitTimeFrame"
                       type="text"
-                      placeholder="What is your goal date?" onChange={(e) => {setNewTimeFrame(e.target.value);}}/>
+                      placeholder={ selectedHabit ? habitBody.habitTimeFrame : "What is your goal date?" } 
+                      onChange={(e) => {setNewTimeFrame(e.target.value);}}/>
                   </div>
                 </div>
                 <div class="mb-4">
@@ -60,8 +60,8 @@ function ReusableForm(props){
                     id="habitSummary"
                     name="habitSummary"
                     type="text"
-                    placeholder="Why are you committing to this goal?" onChange={(e) => {setNewSummary(e.target.value);}}/>
-            
+                    placeholder= { selectedHabit ? habitBody.habitSummary : "Why are you committing to this goal?"} 
+                    onChange={(e) => {setNewSummary(e.target.value);}}/>
                 </div>
                 {/* placeholder for tracker visual representation... */}
                 {/* <div class="mb-4 md:flex md:justify-between">
