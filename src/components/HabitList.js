@@ -8,13 +8,13 @@ import { Context } from '../utils/Context';
 
 
 function HabitList(){
+  
+  const { selectedHabit, setSelectedHabit, 
+          users, setUsers 
+        } =useContext(Context);
 
-  let navigate = useNavigate(); 
-  //const [selectedHabit, setSelectedHabit] = useState(); // Moved to useContext WIP
-  const { selectedHabit, setSelectedHabit } =useContext(Context);
-  const [users, setUsers] = useState([]);
   const usersCollectionRef = collection(db, "user");
-
+  let navigate = useNavigate(); 
 
   useEffect(() => {
     const getUsers = async() => {
