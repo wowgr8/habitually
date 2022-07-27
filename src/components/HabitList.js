@@ -1,15 +1,17 @@
-import { React, useState, useEffect, useCallback, useLayoutEffect } from "react";
+import { React, useState, useEffect, useCallback, useContext } from "react";
 import Habit from "./Habit";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from '../firebase';
 import { useNavigate, Link } from "react-router-dom";
 import EditHabitForm from "./EditHabitForm";
+import { Context } from '../utils/Context';
 
 
 function HabitList(){
 
   let navigate = useNavigate(); 
-  const [selectedHabit, setSelectedHabit] = useState(); // dev purposes/ will delete soon
+  //const [selectedHabit, setSelectedHabit] = useState(); // Moved to useContext WIP
+  const { selectedHabit, setSelectedHabit } =useContext(Context);
   const [users, setUsers] = useState([]);
   const usersCollectionRef = collection(db, "user");
 
