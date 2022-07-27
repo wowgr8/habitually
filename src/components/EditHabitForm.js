@@ -24,7 +24,7 @@ function EditHabitForm (){
                         habitSummary: newSummary, 
                         habitTimeFrame: newTimeFrame, 
                       }; 
-    await updateDoc(doc(db, "user", selectedHabit), newFields) 
+    await updateDoc(doc(db, "user", selectedHabit), {...newFields}) 
 
     // call function which renders button to go back home(HabitLIst), giving the user the option to stay and edit the same habit once again.
     // setSelectedHabit(); Only needed if navigating back to HabitLIst.
@@ -35,6 +35,7 @@ function EditHabitForm (){
     const idRef = doc(db, "user", selectedHabit);
     await deleteDoc(idRef);
     setSelectedHabit();
+    console.log(selectedHabit, "in delteHabit()")
     navigate("/HabitList");
   }
   
