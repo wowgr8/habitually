@@ -1,10 +1,12 @@
-import { React } from "react";
+import { React, useContext } from "react";
+import { Context } from '../utils/Context';
 import PropTypes from "prop-types";
 
 function ReusableForm(props){
 
   // Deconstructed useState setNew's; being passed down from NewHabitForm.js
-  const { setNewHabit, setNewSummary, setNewTimeFrame } = props;
+  // const { setNewHabit, setNewSummary, setNewTimeFrame } = props;
+  const { setNewHabit, setNewSummary, setNewTimeFrame } = useContext(Context);
 
   return(
   <div className="">
