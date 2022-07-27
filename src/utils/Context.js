@@ -10,12 +10,16 @@ export const ContextProvider = ({ children }) => {
   const [ newTimeFrame, setNewTimeFrame ] = useState(() =>"")
   const [ isOpen, setIsOpen ] = useState();
   const [ isAuth, setIsAuth ] = useState();
+  const [ habitBody, setHabitBody ] = useState();
+
+  const [ selectedHabitId, setSelectedHabitId ] = useState();
 
   return (
     <Context.Provider value={{ selectedHabit, setSelectedHabit, users, setUsers, 
                                 newHabit, setNewHabit, newSummary, setNewSummary, 
                                 newTimeFrame, setNewTimeFrame, isOpen, setIsOpen, 
-                                isAuth, setIsAuth }}>
+                                habitBody, setHabitBody, isAuth, setIsAuth,
+                                selectedHabitId, setSelectedHabitId }}>
       {children}
     </Context.Provider>
   );
