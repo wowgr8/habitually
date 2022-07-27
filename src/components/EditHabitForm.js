@@ -1,28 +1,37 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useContext } from "react";
 import ReusableForm from "./ReusableForm"; 
-import { collection, updateDoc, doc, getDocs, setDoc, deleteDoc } from "firebase/firestore";
+import { doc, updateDoc, deleteDoc } from "firebase/firestore";
 import { db } from '../firebase'
-import PropTypes from "prop-types";
+import { Context } from '../utils/Context';
+import { useNavigate } from "react-router-dom";
 
-function EditHabitForm (props){
+function EditHabitForm (){
   const [newHabit, setNewHabit] = useState(() => "")
   const [newSummary, setNewSummary] = useState(() =>"")
   const [newTimeFrame, setNewTimeFrame] = useState(() =>"")
-  // const [habits, setHabits] = useState([])
+  const { selectedHabit, setSelectedHabit } = useContext(Context);
 
-  const updateHabit = async(e, id) => {
+  let navigate = useNavigate();
+
+  const updateHabit = async(e) => {
+    console.log(selectedHabit, "IN EDIT.js");
     e.preventDefault();
     const newFields = {habitName: newHabit, 
                         habitSummary: newSummary, 
                         habitTimeFrame: newTimeFrame, 
                       }; 
-    // setIsOpen(!isOpen);
-    await updateDoc(doc(db, "user", id), newFields) // this method works when id is replaced with hardcoded id ("7wTfjkYOarXknMqthXug"). Needs to be set up to take in useState/context from onHabitSelection() in habitlist.js
+    await updateDoc(doc(db, "user", selectedHabit), newFields) 
+
+    // call function which renders button to go back home(HabitLIst), giving the user the option to stay and edit the same habit once again.
+    // setSelectedHabit(); Only needed if navigating back to HabitLIst.
+    // navigate("/HabitList");
   }
 
-  const deleteHabit = async(id) =>{
-    const idRef = doc(db, "user", id);
+  const deleteHabit = async() =>{
+    const idRef = doc(db, "user", selectedHabit);
     await deleteDoc(idRef);
+    setSelectedHabit();
+    navigate("/HabitList");
   }
   
   return(
@@ -43,9 +52,5 @@ function EditHabitForm (props){
     </div>
   )
 }
-
-EditHabitForm.propTypes = { // Is this needed? Everything works fine if 38-40 are commented out - WIP
-  setIsOpen: PropTypes.bool,
-};
 
 export default EditHabitForm;
