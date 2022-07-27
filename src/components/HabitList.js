@@ -10,7 +10,8 @@ import { Context } from '../utils/Context';
 function HabitList(){
   
   const { selectedHabit, setSelectedHabit, 
-          users, setUsers 
+          users, setUsers,
+          habitBody, setHabitBody
         } =useContext(Context);
 
   const usersCollectionRef = collection(db, "user");
@@ -34,6 +35,7 @@ function HabitList(){
       console.log("individualHabit.id")
       console.log(individualHabit.id) // returns id
       setSelectedHabit(individualHabit.id); // null when useEffect runs the first time per click, true when useEffect runs the second time per click.
+      setHabitBody(individualHabit.data());
       console.log("selectedHabit");
     } else {
       console.log("No such document!");
