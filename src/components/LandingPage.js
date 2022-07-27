@@ -1,11 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useContext} from 'react';
 import { onAuthStateChanged } from "firebase/auth";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { auth } from '../firebase';
+import { Context } from '../utils/Context';
 
 function LandingPage() { //{isAuth, setIsAuth}
 
-  const [isAuth, setIsAuth] = useState();
+  const { isAuth, setIsAuth } = useContext(Context); 
   let navigate = useNavigate();
 
 
