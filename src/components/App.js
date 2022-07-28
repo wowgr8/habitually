@@ -9,6 +9,7 @@ import NewHabitForm from './NewHabitForm';
 import HabitList from './HabitList';
 import SideBar from './Sidebar';
 import { Context } from '../utils/Context';
+import HabitDetail from "./HabitDetail";
 // import Material UI for styling
 import { 
   BrowserRouter as Router,
@@ -37,6 +38,7 @@ function App() {
           <Route path="/HabitList" element={<HabitList />}/>
           <Route path ="/NewHabitForm" element={<NewHabitForm />}/>
           <Route path ="/EditHabitForm" element={<EditHabitForm />}/>
+          <Route path ="/HabitDetail" element={<HabitDetail />}/>
           <Route path ="/" element={<Home />}/>
         </Routes>
     </Router>
