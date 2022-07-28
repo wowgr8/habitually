@@ -12,14 +12,21 @@ export const ContextProvider = ({ children }) => {
   const [ isAuth, setIsAuth ] = useState();
   const [ habitBody, setHabitBody ] = useState();
 
-  const [ selectedHabitId, setSelectedHabitId ] = useState();
+  const [ selectedHabitId, setSelectedHabitId ] = useState(); // unused -WIP
+  const [ createToDate, setCreateToDate ] = useState(); // to hold CreatedAT value after it's been converted to Date() from Timestamp
+  const [ tFToDate, setTFToDate ] = useState(); // to hold HabitTimeFrame value after it's been converted to Date() from Timestamp
+
 
   return (
     <Context.Provider value={{ selectedHabit, setSelectedHabit, users, setUsers, 
                                 newHabit, setNewHabit, newSummary, setNewSummary, 
                                 newTimeFrame, setNewTimeFrame, isOpen, setIsOpen, 
                                 habitBody, setHabitBody, isAuth, setIsAuth,
-                                selectedHabitId, setSelectedHabitId }}>
+                                
+                                selectedHabitId, setSelectedHabitId,
+                                createToDate, setCreateToDate,
+                                tFToDate, setTFToDate
+                                }}>
       {children}
     </Context.Provider>
   );
