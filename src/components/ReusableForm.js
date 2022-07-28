@@ -1,6 +1,8 @@
 import { React, useContext, useState } from "react";
 import { Context } from '../utils/Context';
 import PropTypes from "prop-types";
+import { Timestamp } from "firebase/firestore";
+
 
 function ReusableForm(props){
 
@@ -48,8 +50,8 @@ function ReusableForm(props){
                       name="habitTimeFrame"
                       type="datetime-local"
                       placeholder={ selectedHabit ? habitBody.habitTimeFrame : "What is your goal date?" } 
-                      onChange={(e) => {setNewTimeFrame(e.target.value);}}/>
-                  </div>
+                      onChange={(e) => {setNewTimeFrame(Timestamp.fromDate(new Date(e.target.value)))}}/>
+                  </div>     
                 </div>
                 <div class="mb-4">
                   <label class="block mb-2 text-sm font-bold text-gray-700" for="email">
