@@ -10,7 +10,7 @@ function HabitDetail(){
   //console.log(habitBody.habitTimeFrame);// ut {seconds: 1659294120, nanoseconds: 322000000}
   //console.log(habitBody.habitTimeFrame.seconds * 1000);// 1659294120000
 
-  // useEffect(()=> {
+
 
 
     let interval;
@@ -37,14 +37,10 @@ function HabitDetail(){
         console.log("Days: " + days,  " Hours: " +  hours, " Minutes: " +  minutes,  " Seconds: " +  seconds);
       }
     }
-    interval = setInterval(countDown, minute);
+    interval = setInterval(countDown, second);
     
-  // }, [])
 
-  
-  // habitTimeFrame and createdAT will always need to be passed through new Date().. or use context hook in HabitList.js
-  // to save their state as 12/2/22, then reverese engineer them back into integers to compare current time with goal time
-  // in conditional...
+
   return(
       <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]" >
         <div className="px-6 pt-6 2xl:container">
@@ -60,7 +56,6 @@ function HabitDetail(){
 
 }
 
-// PropTypes placeholder
 
 export default HabitDetail;
 
