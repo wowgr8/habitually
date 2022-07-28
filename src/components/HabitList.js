@@ -73,6 +73,7 @@ function HabitList(){
                   id={user.id}
                   habitName={user.habitName}
                   habitSummary={user.habitSummary}
+                  createdAt={new Date(user.createdAt.seconds * 1000).toLocaleDateString("en-US")}
                   habitTimeFrame={new Date(user.habitTimeFrame.seconds * 1000).toLocaleDateString("en-US")} // returns 7/23/2022
                   // setNewTimeFrame(new Date(user.habitTimeFrame.seconds * 1000))  - ERROR cannot be an obj.
                   // Date.parse(JSON.stringify(new Date(user.habitTimeFrame.seconds * 1000))) - NAN
