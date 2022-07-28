@@ -12,7 +12,9 @@ function HabitList(){
   const { selectedHabit, setSelectedHabit, 
           users, setUsers,
           habitBody, setHabitBody,
-          setNewTimeFrame
+          setNewTimeFrame,
+          createToDate, setCreateToDate,
+          tFToDate, setTFToDate
         } =useContext(Context);
 
   const usersCollectionRef = collection(db, "user");
@@ -32,11 +34,12 @@ function HabitList(){
     const individualHabit = await getDoc(idRef);
     if (individualHabit.exists()) {   
       console.log("individualHabit");
-      console.log(individualHabit); // null (successful)
+      console.log(individualHabit); // null on first run (successful), obj on second.
       console.log("individualHabit.id")
       console.log(individualHabit.id) // returns id
-      setSelectedHabit(individualHabit.id); // null when useEffect runs the first time per click, true when useEffect runs the second time per click.
       setHabitBody(individualHabit.data());
+      // setCreateToDate(new Date(individualHabit.createdAt.seconds * 1000).toLocaleDateString("en-US")); TypeError: Cannot read properties of undefined (reading 'seconds')
+      setSelectedHabit(individualHabit.id); // null when useEffect runs the first time per click, true when useEffect runs the second time per click.
       console.log("selectedHabit");
     } else {
       console.log("No such document!");
@@ -48,10 +51,10 @@ function HabitList(){
     console.log("useEffect ", selectedHabit);
     if (selectedHabit) { // in the beginning, this starts out as `undefined`, which is the same thing as `false`
       // If defined, do this:
-      console.log(selectedHabit)
+      console.log(createToDate)
       console.log("selected habit is undefined and it exists. Inside If.")
-      navigate("/EditHabitForm");
-      console.log("After /EditHabitForm")
+      // navigate("/EditHabitForm");
+      navigate("/HabitDetail");
     } else {
       // if undefined, do this:
       console.log(selectedHabit)
@@ -69,24 +72,19 @@ function HabitList(){
           return(
             <div className="px-6 pt-6 2xl:container">
                 <Habit
-                  habitClicked={onHabitSelection}
+                  habitClicked={onHabitSelection}  
                   id={user.id}
                   habitName={user.habitName}
                   habitSummary={user.habitSummary}
                   createdAt={new Date(user.createdAt.seconds * 1000).toLocaleDateString("en-US")}
-                  habitTimeFrame={new Date(user.habitTimeFrame.seconds * 1000).toLocaleDateString("en-US")} // returns 7/23/2022
-                  // setNewTimeFrame(new Date(user.habitTimeFrame.seconds * 1000))  - ERROR cannot be an obj.
-                  // Date.parse(JSON.stringify(new Date(user.habitTimeFrame.seconds * 1000))) - NAN
-                  // Date.parse(new Date(user.habitTimeFrame.seconds * 1000))         -             returns 1658637060000
-                  // JSON.stringify(new Date(user.habitTimeFrame.seconds * 1000))          -      returns  "2022-04-21T07:00:00.000Z"
-                  
+                  habitTimeFrame={new Date(user.habitTimeFrame.seconds * 1000).toLocaleDateString("en-US")}
                   />
                 <hr></hr>
-                  {console.log(user.habitTimeFrame, " = ut {seconds: 1650524400, nanoseconds: 0}")} 
+                  {/* {console.log(user.habitTimeFrame, " = ut {seconds: 1650524400, nanoseconds: 0}")} 
                   {console.log(user.habitTimeFrame.seconds * 1000, " = 1650524400000 MAYBE YOU CAN DO a conditional based off this Int. if Date().now is > thisNum then get pokemon... You'll have to keep them as toLocalDateString, reverse engeneer them w/ newDate /1000?? to compare them.")}
                   {console.log(               new Date(user.habitTimeFrame.seconds * 1000), " = Thu Apr 21 2022 00:00:00 GMT-0700 (Pacific Daylight Time) ERROR, objects are not valid as React child.")} 
                   {console.log(JSON.stringify(new Date(user.habitTimeFrame.seconds * 1000)), " = '2022-04-21T07:00:00.000Z'")}
-                  {console.log(new Date(user.habitTimeFrame.seconds * 1000).toLocaleDateString("en-US"), " = 4/21/2022 : this will do for now.")}
+                  {console.log(new Date(user.habitTimeFrame.seconds * 1000).toLocaleDateString("en-US"), " = 4/21/2022 : this will do for now.")} */}
             </div>
           )
         })}
