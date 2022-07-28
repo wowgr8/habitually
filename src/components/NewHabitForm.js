@@ -1,6 +1,6 @@
 import { React, useState, useContext } from "react";
 import ReusableForm from "./ReusableForm";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from '../firebase';
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
@@ -16,15 +16,16 @@ function NewHabitForm(){
         } = useContext(Context);
 
   let navigate = useNavigate(); 
-
   const usersCollectionRef = collection(db, "user");
-
   const createUser = async (e) => {
-    e.preventDefault();
-    await addDoc(usersCollectionRef, { habitName: newHabit, 
+    console.log(newTimeFrame)
+    e.preventDefault(); 
+    await addDoc(usersCollectionRef, {  habitName: newHabit, 
                                         habitSummary: newSummary, 
-                                        habitTimeFrame: newTimeFrame 
+                                        habitTimeFrame : newTimeFrame, 
+                                        createdAt: serverTimestamp()
                                       });
+                          console.log(newTimeFrame);
     navigate("/HabitList");
   }
 
