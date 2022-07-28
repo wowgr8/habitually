@@ -1,6 +1,6 @@
 import { React, useState, useEffect, useCallback, useContext } from "react";
 import Habit from "./Habit";
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, Timestamp } from "firebase/firestore";
 import { db } from '../firebase';
 import { useNavigate, Link } from "react-router-dom";
 import EditHabitForm from "./EditHabitForm";
@@ -11,7 +11,8 @@ function HabitList(){
   
   const { selectedHabit, setSelectedHabit, 
           users, setUsers,
-          habitBody, setHabitBody
+          habitBody, setHabitBody,
+          setNewTimeFrame
         } =useContext(Context);
 
   const usersCollectionRef = collection(db, "user");
@@ -59,9 +60,6 @@ function HabitList(){
     console.log("End of useEffect()")
   },[onHabitSelection]) 
   
-
-
-
   return(
     <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]" id="habitListDiv">
       <div className="px-6 pt-6 2xl:container">
@@ -75,12 +73,23 @@ function HabitList(){
                   id={user.id}
                   habitName={user.habitName}
                   habitSummary={user.habitSummary}
-                  habitTimeFrame={user.habitTimeFrame}
+                  habitTimeFrame={new Date(user.habitTimeFrame.seconds * 1000).toLocaleDateString("en-US")} // returns 7/23/2022
+                  // setNewTimeFrame(new Date(user.habitTimeFrame.seconds * 1000))  - ERROR cannot be an obj.
+                  // Date.parse(JSON.stringify(new Date(user.habitTimeFrame.seconds * 1000))) - NAN
+                  // Date.parse(new Date(user.habitTimeFrame.seconds * 1000))         -             returns 1658637060000
+                  // JSON.stringify(new Date(user.habitTimeFrame.seconds * 1000))          -      returns  "2022-04-21T07:00:00.000Z"
+                  
                   />
                 <hr></hr>
+                  {console.log(user.habitTimeFrame, " = ut {seconds: 1650524400, nanoseconds: 0}")} 
+                  {console.log(user.habitTimeFrame.seconds * 1000, " = 1650524400000 MAYBE YOU CAN DO a conditional based off this Int. if Date().now is > thisNum then get pokemon... You'll have to keep them as toLocalDateString, reverse engeneer them w/ newDate /1000?? to compare them.")}
+                  {console.log(               new Date(user.habitTimeFrame.seconds * 1000), " = Thu Apr 21 2022 00:00:00 GMT-0700 (Pacific Daylight Time) ERROR, objects are not valid as React child.")} 
+                  {console.log(JSON.stringify(new Date(user.habitTimeFrame.seconds * 1000)), " = '2022-04-21T07:00:00.000Z'")}
+                  {console.log(new Date(user.habitTimeFrame.seconds * 1000).toLocaleDateString("en-US"), " = 4/21/2022 : this will do for now.")}
             </div>
           )
         })}
+
       </div>
     </div>
   )
