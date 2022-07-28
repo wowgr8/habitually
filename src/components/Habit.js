@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 function Habit(props){
 
-  const { habitClicked, id, habitName, habitSummary, habitTimeFrame } = props
+  const { habitClicked, id, habitName, habitSummary, habitTimeFrame, createdAt } = props
 
   return(
     // the conatiner is being set in habitList.js 
@@ -13,24 +13,25 @@ function Habit(props){
         <li x-for="">
           {/* adds to the nice spacing when rendered back into HabitList.js: bg-white shadow-md rounded mb-4 flex flex-col */}
           <a  className="">
-            <dl className="">
+            <div className="">
               <div onClick={()=>habitClicked(id)} className=" items-center space-x-4 rounded-xl text-white bg-gradient-to-r from-sky-600 to-cyan-400">
                 <h1>Id: {id}</h1>
                 <h1>Habit: {habitName}</h1>
                 <h1>Summary: {habitSummary}</h1>
                 <h1>Goal date: {habitTimeFrame}</h1>
+                <h1>Created: {createdAt}</h1>
                 <div>
-                  <dt className="sr-only text-grey-darker">Habit Name</dt>
-                  <dd className="">
+                  <div className="sr-only text-grey-darker">Habit Name</div>
+                  <div className="">
                     {habitName}
-                  </dd>
+                  </div>
                 </div>
                 <div>
-                  <dt className="sr-only text-grey-darker">Habit TimeFrame</dt>
-                  <dd className="test-black">{habitTimeFrame}</dd>
+                  <div className="sr-only text-grey-darker">Habit TimeFrame</div>
+                  <div className="test-black">{habitTimeFrame}</div>
                 </div>
               </div>
-            </dl>
+            </div>
           </a>
         </li>
       </ul>
