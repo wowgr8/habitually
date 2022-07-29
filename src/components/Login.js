@@ -178,34 +178,20 @@ function Login(){
 
 export default Login;
 
-// Pre-Tailwind
-      // <div className="px-6 pt-6 2xl:container">
-      //   <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-1 md:container md:mx-auto">
-      //       <h1>Sign up</h1>
-      //       <form onSubmit={authSignUp}>
-      //         <input
-      //           type='text'
-      //           name='email'
-      //           placeholder='email' />
-      //         <input
-      //           type='password'
-      //           name='password'
-      //           placeholder='Password' />
-      //         <button type='submit'>Sign up</button>
-      //       </form>
-      //       <h1>Sign In</h1>
-      //       <form onSubmit={authSignIn}>
-      //         <input
-      //           type='text'
-      //           name='signinEmail'
-      //           placeholder='email' />
-      //         <input
-      //           type='password'
-      //           name='signinPassword'
-      //           placeholder='Password' />
-      //         <button type='submit'>Sign in</button>
-      //       </form>
-      //       <h1>Sign Out</h1>
-      //       <button onClick={authSignOut}>Sign out</button>
-      //     </div>
-      // </div>
+// alternate for 'already have an account? Sign in'
+                // <div class="text-center">
+                //   <a
+                //     class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+                //     href="#"
+                //   >
+                //     Forgot Password?
+                //   </a>
+                // </div>
+                // <div class="text-center">
+                //   <a
+                //     class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+                //     href="./index.html"
+                //   >
+                //     Already have an account? Login!
+                //   </a>
+                // </div>
