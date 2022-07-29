@@ -52,15 +52,15 @@ function HabitDetail(){
   interval = setInterval(countDown, second);
 
   let navigate = useNavigate();
+
+  const editBtn = () => {
+    navigate("/EditHabitForm");
+  }
   
   const backButton = () => {
     setSelectedHabit();
     console.log(selectedHabit);
     navigate("/HabitList");
-  }
-
-  const editBtn = () => {
-    navigate("/EditHabitForm");
   }
 
   return(
@@ -161,10 +161,10 @@ function HabitDetail(){
                 </tr>
               </tbody>
               <div >
-                <button onClick={backButton} className="btn glass">Back to List</button>
+                <button onClick={backButton} className="btn glass hover:bg-purple-700 border border-red-800 hover:text-black hover:shadow-lg hover:shadow-purple-500/50">Back to List</button>
               </div>
               <div >
-                <button onClick={editBtn} className="btn glass">Edit</button>
+                <button onClick={editBtn} className="btn glass hover:bg-blue-800 border-black-800 hover:text-black hover:shadow-lg hover:shadow-blue-500/50">Edit</button>
               </div>
             </table>
           </div> 
