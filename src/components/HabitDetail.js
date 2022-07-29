@@ -64,80 +64,109 @@ function HabitDetail(){
 
 
   return(
-
-      <div className="h-full ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]" >
-        <div className="h-full px-6 pt-6 2xl:container ">
-          <div className="h-full  bg-white shadow-md rounded px-8 pt-16 pb-18 mb-4  flex-col ">
-            <div class="overflow-x-auto relative">
-              <table class="w-full text-xl text-left text-white-500 ">
-                <thead class="text-3xl text-gray-800 uppercase bg-white-50  ">
-                  <tr>
-                    <th scope="col" class="py-3 px-6 center">
-                      DETAILS
+  <div className="h-full ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]" >
+    <div className="h-full px-6 pt-6 2xl:container ">
+      <div className="h-full  bg-white shadow-md rounded px-8 pt-16 pb-18 mb-4  flex-col ">
+        <div class="overflow-x-auto relative">
+          <table class="w-full text-xl text-left text-white-500 ">
+            <thead class="text-3xl text-gray-800 uppercase bg-white-50  ">
+              <tr>
+                <th scope="col" class="py-3 px-6 center">
+                  DETAILS
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="bg-red border-b">
+                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
+                  Id  
+                </th>
+                <td class="py-4 px-6 text-gray-500">
+                  {selectedHabit}
+                </td>
+              </tr>
+              <tr class="bg-white border-b">
+                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
+                  Name 
+                </th>
+                <td class="py-4 px-6 text-gray-500">
+                  {habitBody.habitName}
+                </td>
+              </tr>
+              <tr class="bg-white border-b">
+                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
+                  Summary
+                </th>
+                <td class="py-4 px-6 text-gray-500">
+                  {habitBody.habitSummary}
+                </td>
+              </tr>
+              <tr class="bg-white border-b">
+                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
+                  Created  
+                </th>
+                <td class="py-4 px-6 text-gray-500">
+                  {new Date(habitBody.habitTimeFrame.seconds * 1000).toLocaleDateString("en-US")}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+            {/* text-center dark:bg-gray-800 dark:border-gray-700  */}
+          <div class="p-4 w-full bg-gray rounded-lg border shadow-md sm:p-8 ">
+            <table class="w-full text-sm text-left text-gray-500 ">
+              <tbody>
+                <tr class="bg-white border-b ">
+                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
+                      Seconds:
                     </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="bg-red border-b">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
-                      Id  
-                    </th>
-                    <td class="py-4 px-6 text-gray-500">
-                      {selectedHabit}
+                    <td>
+                      <h2 id="second"></h2>
                     </td>
-                  </tr>
-                  <tr class="bg-white border-b">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
-                      Name 
-                    </th>
-                    <td class="py-4 px-6 text-gray-500">
-                      {habitBody.habitName}
+                    <td>
+                      <progress class="progress progress-success w-56" value={newS} max="100"></progress>
                     </td>
-                  </tr>
-                  <tr class="bg-white border-b">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
-                      Summary
+                </tr>
+                <tr class="bg-white border-b ">
+                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
+                      Minutes:
                     </th>
-                    <td class="py-4 px-6 text-gray-500">
-                      {habitBody.habitSummary}
+                    <td>
+                      <h2 id="minute"></h2>
                     </td>
-                  </tr>
-                  <tr class="bg-white border-b">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
-                      Created  
+                    <td>
+                      <progress class="progress progress-success w-26" value={newM} max="100"></progress>
+                    </td>
+                </tr>
+                <tr class="bg-white border-b ">
+                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
+                      Hours:
                     </th>
-                    <td class="py-4 px-6 text-gray-500">
-                      {new Date(habitBody.habitTimeFrame.seconds * 1000).toLocaleDateString("en-US")}
+                    <td>
+                      <h2 id="hour"></h2>
                     </td>
-                  </tr>
-                </tbody>
-              </table>
-
-              
-                {/* text-center dark:bg-gray-800 dark:border-gray-700  */}
-              <div class="p-4 w-full bg-white rounded-lg border shadow-md sm:p-8 ">
-
-                <h2 id="second"></h2>
-                <progress class="progress progress-success w-56" value={newS} max="100"></progress>
-
-                <h2 id="minute"></h2>
-                <progress class="progress progress-success w-26" value={newM} max="100"></progress>
-
-                <h2 id="hour"></h2>
-                <progress class="progress progress-success w-26" value={newH} max="100"></progress>
-
-                <div class="mb-1 text-base font-medium ">Days:</div> 
-                <p id= "day"></p>
-                <progress class="progress progress-success w-56" value={newD} max="100"></progress>
-
-            
-              </div> 
-            </div>
-          </div>
+                    <td>
+                      <progress class="progress progress-success w-26" value={newH} max="100"></progress>
+                    </td>
+                </tr>
+                <tr class="bg-white border-b ">
+                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
+                      Days:
+                    </th>
+                    <td>
+                      <h2 id="day"></h2>
+                    </td>
+                    <td>
+                      <progress class="progress progress-success w-26" value={newD} max="100"></progress>
+                    </td>
+                </tr>
+              </tbody>
+            </table>
+          </div> 
         </div>
       </div>
+    </div>
+  </div>
   )
-
 }
 
 
