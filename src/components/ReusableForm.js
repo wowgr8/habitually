@@ -6,7 +6,7 @@ import { Timestamp } from "firebase/firestore";
 
 function ReusableForm(props){
 
-  const { setNewHabit, setNewSummary, setNewTimeFrame, selectedHabit,  habitBody } = useContext(Context);
+  const { setNewHabit, setNewSummary, setNewTimeFrame, selectedHabit, habitBody } = useContext(Context);
 
   return(
   <div className="">
@@ -97,26 +97,15 @@ function ReusableForm(props){
                     type="submit">{props.buttonText}</button>
                 </div>
                 <hr class="mb-6 border-t" />
-                {/* PERHAPS import button delete and edit button here
-                would need to conditionally render from habitlist onselectinghabit -> editHabitform to here
-                 */}
-                
-                {/* <div class="text-center">
-                  <a
-                    class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                    href="#"
-                  >
-                    Forgot Password?
-                  </a>
+                <div className="  rounded-b-box rounded-tr-box flex min-h-[6rem] min-w-[18rem] max-w-4xl flex-wrap items-center justify-center gap-2 overflow-x-hidden border bg-cover bg-top p-4 undefined">
+                  <button onClick={()=>props.onDelete()} className="btn btn-wide glass hover:bg-red-600 focus:ring-4 focus:ring-red-300">
+                    Delete
+                  </button>
+                  <button onClick={()=>props.onBack()} className="btn btn-wide glass hover:bg-purple-700 border border-red-800 hover:text-black hover:shadow-lg hover:shadow-purple-500/50">
+                    Back
+                  </button>
+                  {/* add back to list/home btn */}
                 </div>
-                <div class="text-center">
-                  <a
-                    class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                    href="./index.html"
-                  >
-                    Already have an account? Login!
-                  </a>
-                </div> */}
               </form>
             </div>
           </div>
@@ -140,7 +129,9 @@ function ReusableForm(props){
 
 ReusableForm.propTypes = {
   onSubmissionHandler: PropTypes.func,
-  buttonText: PropTypes.string
+  buttonText: PropTypes.string,
+  onDelete: PropTypes.func,
+  onBack: PropTypes.func
 };
 
 export default ReusableForm;
