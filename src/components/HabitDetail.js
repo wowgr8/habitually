@@ -1,10 +1,9 @@
-import { React, useContext, useEffect, useState } from "react";
-import PropTypes from "prop-types";
+import { React, useContext, useState } from "react";
 import { Context } from "../utils/Context";
-import Habit from "./Habit"; //Most likely not be necessary due to props
+
 
 function HabitDetail(){
-  const { setNewHabit, setNewSummary, setNewTimeFrame, users, selectedHabit,  habitBody, createToDate } = useContext(Context);
+  const { selectedHabit,  habitBody } = useContext(Context);
   const [newS, setS] = useState();
   const [newM, setM] = useState();
   const [newH, setH] = useState();
@@ -16,7 +15,6 @@ function HabitDetail(){
 
   let interval;
   const eventDay = new Date(habitBody.habitTimeFrame.seconds * 1000); // returns obj.
-  // defining second minute hour and day
   const second = 1000;
   const minute = second * 60;
   const hour = minute * 60;
@@ -41,7 +39,6 @@ function HabitDetail(){
       let minuteField = document.getElementById('minute');
       let secondField = document.getElementById('second');
       
-      //console.log("Days: " + days,  " Hours: " +  hours, " Minutes: " +  minutes,  " Seconds: " +  seconds);
       dayField.innerHTML = days;
       hourField.innerHTML = hours;
       minuteField.innerHTML = minutes;      
@@ -53,15 +50,6 @@ function HabitDetail(){
     }
   }
   interval = setInterval(countDown, second);
-
-
-  // useEffect(()=> {
-      
-
-
-  // }, [day, hour, minute, second]);
-    
-
 
   return(
   <div className="h-full ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]" >
@@ -171,36 +159,3 @@ function HabitDetail(){
 
 
 export default HabitDetail;
-
-
-{/* <div className="flex justify-between mb-1">
-<span class="text-base font-medium text-blue-700">Days</span>
-<span class="text-sm font-medium text-blue-700 dark:text-blue" id="day"></span>
-</div>
-<div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-<div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
-</div>
-
-<div className="flex justify-between mb-1">
-<span class="text-base font-medium text-blue-700">Days</span>
-<span class="text-sm font-medium text-blue-700 dark:text-blue" id="hour"></span>
-</div>
-<div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-<div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
-</div>
-
-<div className="flex justify-between mb-1">
-<span class="text-base font-medium text-blue-700">Days</span>
-<span class="text-sm font-medium text-blue-700 dark:text-blue" id="minute"></span>
-</div>
-<div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-<div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
-</div>
-
-<div className="flex justify-between mb-1">
-<span class="text-base font-medium text-blue-700">Days</span>
-<span class="text-sm font-medium text-blue-700 dark:text-blue" id="second"></span>
-</div>
-<div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-<div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
-</div> */}
