@@ -10,6 +10,7 @@ import HabitList from './HabitList';
 import SideBar from './Sidebar';
 import { Context } from '../utils/Context';
 import HabitDetail from "./HabitDetail";
+import Garden from "./Garden";
 // import Material UI for styling
 import { 
   BrowserRouter as Router,
@@ -40,6 +41,7 @@ function App() {
           <Route path ="/NewHabitForm" element={<NewHabitForm />}/>
           <Route path ="/EditHabitForm" element={<EditHabitForm />}/>
           <Route path ="/HabitDetail" element={<HabitDetail />}/>
+          <Route path="/Garden" element={<Garden />}/>
           <Route path ="/" element={<Home />}/>
         </Routes>
     </Router>
