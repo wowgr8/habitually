@@ -10,7 +10,7 @@ function LandingPage() { //{isAuth, setIsAuth}
   let navigate = useNavigate();
 
 
-
+// for background, check out Arbitrary values section:  https://tailwindcss.com/docs/background-image
 
   // When button is clicked. and user is authorized It will take you to home.js otherwise it wil go to login.js
   const monitorAuthState = async (e) => {
@@ -73,4 +73,7 @@ function LandingPage() { //{isAuth, setIsAuth}
   )
 }
 
-export default LandingPage
+export default LandingPage;
+
+
+
