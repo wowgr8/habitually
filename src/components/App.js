@@ -29,8 +29,9 @@ function App() {
 
   return (
     <Router>
-        <Header />
         {/* sidebar will need to render after auth is true. so it will need to be be moved into routes and then conditionally rendered  */}
+        {/* ALSO LandingPage needs to be rendered first. */}
+        <Header />
         <SideBar /> 
         <Routes>
           <Route path="/LandingPage" element={<LandingPage />}/>
