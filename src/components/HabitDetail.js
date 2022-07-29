@@ -1,9 +1,10 @@
 import { React, useContext, useState } from "react";
 import { Context } from "../utils/Context";
+import { useNavigate } from 'react-router-dom';
 
 
 function HabitDetail(){
-  const { selectedHabit,  habitBody } = useContext(Context);
+  const { selectedHabit, setSelectedHabit,  habitBody } = useContext(Context);
   const [newS, setS] = useState();
   const [newM, setM] = useState();
   const [newH, setH] = useState();
@@ -14,21 +15,20 @@ function HabitDetail(){
   //console.log(habitBody.habitTimeFrame.seconds * 1000);// 1659294120000
 
   let interval;
-  const eventDay = new Date(habitBody.habitTimeFrame.seconds * 1000); // returns obj.
   const second = 1000;
   const minute = second * 60;
   const hour = minute * 60;
   const day = hour * 24;
 
-
   const countDown = () => {
+    const eventDay = new Date(habitBody.habitTimeFrame.seconds * 1000); // returns obj.
     let now = new Date() /1 ;
     let timeSpan = eventDay - now;
     if (timeSpan <= 0) {
       console.log("Today is the event day");
       clearInterval(interval);
       return;
-    } else {
+      } else {
       const days = Math.floor(timeSpan / day);
       const hours = Math.floor((timeSpan % day) / hour);
       const minutes = Math.floor((timeSpan % hour) / minute);
@@ -50,6 +50,18 @@ function HabitDetail(){
     }
   }
   interval = setInterval(countDown, second);
+
+  let navigate = useNavigate();
+  
+  const backButton = () => {
+    setSelectedHabit();
+    console.log(selectedHabit);
+    navigate("/HabitList");
+  }
+
+  const editBtn = () => {
+    navigate("/EditHabitForm");
+  }
 
   return(
   <div className="h-full ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]" >
@@ -148,6 +160,12 @@ function HabitDetail(){
                     </td>
                 </tr>
               </tbody>
+              <div >
+                <button onClick={backButton} className="btn glass">Back to List</button>
+              </div>
+              <div >
+                <button onClick={editBtn} className="btn glass">Edit</button>
+              </div>
             </table>
           </div> 
         </div>
