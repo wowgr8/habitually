@@ -46,7 +46,7 @@ function SideBar(){
     <div className="sidebarrr">
       <aside className= "fixed top-0 z-10 ml-[-100%] flex h-screen w-full flex-col justify-between border-r bg-white px-6 pb-3 transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]">
         <div>
-        <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">HABITUALLY</h1>
+          <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">HABITUALLY</h1>
           {/* <div className="-mx-6 px-6 py-4">    THIS HOLDS PROFILE IMAGE
             <a href="#" title="home">
               <img src="https://tailus.io/sources/blocks/stats-cards/preview/images/logo.svg" className="w-32" alt="tailus logo">
@@ -83,8 +83,6 @@ function SideBar(){
             </button>
         </div>
       </aside>
-
-
     </div>
   );
 }
