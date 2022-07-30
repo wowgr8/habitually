@@ -6,18 +6,23 @@ import axios from 'axios';
 function Garden() {
   
   const [ pokemonName, setPokemonName ] = useState([]);
+  const [ pokemonIMGURL, setPokemonIMGURL ] = useState([]);
   const [ dbPokemon, setDbPokemon ] = useState([])
 
   const randomNum = Math.floor(Math.random() * 151) +1;
   const imageUrl = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${randomNum}.png?raw=true`;
 
   useEffect(()=> {
-    axios.get(`https://pokeapi.co/api/v2/pokemon/${randomNum}`).then(res => {
-      setPokemonName(res.data.forms)
-    })
-    console.log(pokemonName)
-    console.log(pokemonName[0].name) 
-  }, []) 
+    const pokemonRes = async() => {await axios.get(`https://pokeapi.co/api/v2/pokemon/${randomNum}/`)
+    const pokemonIURL = pokemonRes.data.sprites.front_default;
+    setPokemonIMGURL(pokemonIURL);
+    const pokeName = pokemonRes.data.name;
+    setPokemonName(pokeName);
+
+    }
+
+
+  }, [ ]) 
 
 
 
@@ -30,7 +35,9 @@ function Garden() {
           <p>HELLO world</p>
           <img data-tooltip-target="tooltip-no-arrow" className=" w-80 h-80" src={imageUrl}/>
           <div >
-            <h1>{pokemonName[0].name} </h1>
+            {console.log(pokemonIMGURL)}
+            {console.log(pokemonName)}
+            {/* <h1>{pokemonName[0].name} </h1> */}
           </div>
         </div>
       </div>
@@ -39,4 +46,4 @@ function Garden() {
   )
 }
 
-export default Garden
+export default Garden 
