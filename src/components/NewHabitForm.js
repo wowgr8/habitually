@@ -7,9 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { Context } from '../utils/Context';
 
 function NewHabitForm(){
-  // const [newHabit, setNewHabit] = useState(() => "")
-  // const [newSummary, setNewSummary] = useState(() =>"")
-  // const [newTimeFrame, setNewTimeFrame] = useState(() =>"")
+
   const { newHabit, setNewHabit,
           newSummary, setNewSummary,
           newTimeFrame, setNewTimeFrame
