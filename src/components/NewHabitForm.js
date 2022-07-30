@@ -34,9 +34,6 @@ function NewHabitForm(){
         <ReusableForm 
           onSubmissionHandler = {createUser}
           buttonText="CREATE!"
-          setNewHabit = {setNewHabit}
-          setNewSummary = {setNewSummary}
-          setNewTimeFrame = {setNewTimeFrame}
           />
       </div>
     </div>
