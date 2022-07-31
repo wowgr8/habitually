@@ -70,7 +70,7 @@ function HabitList(){
       <p><Link to="/NewHabitForm">Add New Habit</Link></p> 
         {users.map((user) => {
           return(
-            <div className="px-6 pt-6 2xl:container">
+            <div className="px-6 pt-6 2xl:container  items-center space-x-4 rounded-xl text-white bg-gradient-to-r from-sky-600 to-cyan-400 mb-8">
                 <Habit
                   habitClicked={onHabitSelection}  
                   id={user.id}
