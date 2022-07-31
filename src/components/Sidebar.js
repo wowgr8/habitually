@@ -44,7 +44,7 @@ function SideBar(){
 
   return(
     <div className="sidebarrr">
-      <aside className= "fixed top-0 z-10 ml-[-100%] flex h-screen w-full flex-col justify-between border-r bg-white px-6 pb-3 transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]">
+      <aside className= "fixed top-0 z-10 ml-[-100%] flex h-screen w-full flex-col justify-between border border-slate-800 bg-gray-900 px-6 pb-3 transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]">
         <div>
           {/* <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">HABITUALLY</h1> */}
           <div className="mx-10 px-6 py-4 w-52">   
@@ -72,7 +72,7 @@ function SideBar(){
             })}
           </ul>
         </div>
-        <div className="px-6 -mx-6 pt-4 flex justify-between items-center border-t">
+        <div className="px-6 -mx-6 pt-4 flex justify-between items-center border-t border-slate-800">
             <button onClick={authSignOut} className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
