@@ -79,13 +79,13 @@ function Login(){
   return(
     <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
       <div className="px-6 pt-6 2xl:container">
-        <div className="bg-white shadow-md rounded px-8 pt-16 pb-18 mb-4 flex flex-col">
+        <div className="shadow-md rounded px-8 pt-16 pb-18 mb-4 flex flex-col rounded-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700 ">
           <form onSubmit={authSignUp}>
-            <div className="mb-4">
+            <div className="mb-4 ">
               <label className="block text-grey-darker text-sm font-bold mb-2" for="username">
                 Email
               </label>
-              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" 
+              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker dark:border-blue-500 bg-gray-50 " 
                 id="email" 
                 type="text" 
                 placeholder="email" />              
@@ -95,7 +95,7 @@ function Login(){
               <label className="block text-grey-darker text-sm font-bold mb-2" for="password">
                 Password
               </label>
-              <input className="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3" 
+              <input className="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3 dark:border-blue-500" 
                 id="password" 
                 type="password" 
                 placeholder="******************" />
@@ -115,7 +115,7 @@ function Login(){
               <label className="block text-grey-darker text-sm font-bold mb-2" for="username">
                 Email
               </label>
-              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" 
+              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker dark:border-blue-500" 
                 id="signinemail" 
                 name='signinEmail'
                 type="text" 
@@ -126,7 +126,7 @@ function Login(){
               <label className="block text-grey-darker text-sm font-bold mb-2" for="password">
                 Password
               </label>
-              <input className="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3" 
+              <input className="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3 dark:border-blue-500 " 
                 id="signinpassword" 
                 name='signinPassword'
                 type="password" 
