@@ -41,18 +41,17 @@ function EditHabitForm (){
   return(
     <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]" >
       <div className="px-6 pt-6 2xl:container">
-        <div className="h-full  bg-white shadow-md rounded px-8 pt-16 pb-18 mb-4  flex-col ">
-          <div class="overflow-x-auto relative">
-            <ReusableForm 
-              onSubmissionHandler = {updateHabit}
-              onDelete= {deleteHabit}
-              onBack= {backButton}
-              buttonText="UPDATE!"
-              setNewHabit = {setNewHabit}
-              setNewSummary = {setNewSummary}
-              setNewTimeFrame = {setNewTimeFrame}
-              />
-          </div>
+        <div class="overflow-x-auto relative">
+          <ReusableForm 
+            onSubmissionHandler = {updateHabit}
+            onDelete= {deleteHabit}
+            onBack= {backButton}
+            buttonText="UPDATE!"
+            title="NEW DETAILS"
+            setNewHabit = {setNewHabit}
+            setNewSummary = {setNewSummary}
+            setNewTimeFrame = {setNewTimeFrame}
+            />
         </div>
       </div>
     </div>
