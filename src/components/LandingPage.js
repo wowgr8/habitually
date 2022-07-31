@@ -48,19 +48,19 @@ function LandingPage() { //{isAuth, setIsAuth}
     >
 
     <div id="landingPageDiv" className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
-      <div className="px-6 pt-6 2xl:container">
+      <div className="px-6 pt-6 2xl:container pb-44 mb-44 pl-32 pt-44">
         {/* fix form so that it is more responsive... remove column so it doesnt float right */}
-          <div className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white ml-60">
+          <div className="max-w-sm rounded-lg overflow-hidden shadow-lg  bg-white ml-60 border-gray-200 dark:bg-gray-800 dark:border-gray-700 mt-10 "> 
             <div className="flex flex-col min-h-full">
-              <div className="px-6 py-4 border-b">
+              <div className="px-6 py-4 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
                 <div className="text-xl text-center">Welcome to Habitually!</div>
               </div>
-              <div className="px-6 py-10 flex-grow">
-                <p className="text-gray-700 text-base">
+              <div className="px-6 py-10 flex-grow justify-center">
+                <p className="text-white-300 text-base">
                   A place to track and manage your goals and progression.
                 </p>
               </div>
-              <div className="px-5 py-3 border-t bg-gray-100 flex justify-end">
+              <div className="px-5 py-3 border-t bg-gray-100 flex justify-end border-gray-200 dark:bg-gray-800 dark:border-gray-700">
                 {/* <button  class="btn-gradient-default text-gray-600 font-medium text-sm py-1 px-5 rounded mr-3">Cancel</button> */}
                 <button onClick={monitorAuthState} className="btn-gradient-success bg-blue-500 text-white font-medium text-sm py-1 px-5 rounded">Get Started</button>
               </div>
