@@ -75,7 +75,7 @@ function HabitList(){
       <div className="px-6 pt-6 2xl:container flex flex-wrap grid grid-cols-2 ml-20 mr-20 gap-x-0">
         {users.map((user) => {
           return(
-            <div class="p-6 mx-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mb-8 shadow-xl outline outline-gray-800 hover:outline-blue-500 ">
+            <div class="p-6 mx-6 max-w-sm bg-white rounded-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700 mb-8 shadow-2xl outline outline-gray-800 hover:outline-blue-500 ">
                 <Habit
                   habitClicked={onHabitSelection}  
                   id={user.id}
