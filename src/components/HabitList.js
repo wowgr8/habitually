@@ -65,12 +65,11 @@ function HabitList(){
   
   return(
     <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]" id="habitListDiv">
-      <div className="px-6 pt-6 2xl:container">
-        {/* Conditionally render this link and list if users.length !== 0, Else navigate to addNewHabitForm.js. */}
-      <p><Link to="/NewHabitForm">Add New Habit</Link></p> 
+      <p className="px-10 ml-20"><Link to="/NewHabitForm">Add New Habit</Link></p> 
+      <div className="px-6 pt-6 2xl:container flex flex-wrap grid grid-cols-2 ml-20 mr-20 gap-x-0">
         {users.map((user) => {
           return(
-            <div className="px-6 pt-6 2xl:container  items-center space-x-4 rounded-xl text-white bg-gradient-to-r from-sky-600 to-cyan-400 mb-8">
+            <div class="p-6 mx-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mb-8">
                 <Habit
                   habitClicked={onHabitSelection}  
                   id={user.id}
@@ -79,16 +78,9 @@ function HabitList(){
                   createdAt={new Date(user.createdAt.seconds * 1000).toLocaleDateString("en-US")}
                   habitTimeFrame={new Date(user.habitTimeFrame.seconds * 1000).toLocaleDateString("en-US")}
                   />
-                <hr></hr>
-                  {/* {console.log(user.habitTimeFrame, " = ut {seconds: 1650524400, nanoseconds: 0}")} 
-                  {console.log(user.habitTimeFrame.seconds * 1000, " = 1650524400000 MAYBE YOU CAN DO a conditional based off this Int. if Date().now is > thisNum then get pokemon... You'll have to keep them as toLocalDateString, reverse engeneer them w/ newDate /1000?? to compare them.")}
-                  {console.log(               new Date(user.habitTimeFrame.seconds * 1000), " = Thu Apr 21 2022 00:00:00 GMT-0700 (Pacific Daylight Time) ERROR, objects are not valid as React child.")} 
-                  {console.log(JSON.stringify(new Date(user.habitTimeFrame.seconds * 1000)), " = '2022-04-21T07:00:00.000Z'")}
-                  {console.log(new Date(user.habitTimeFrame.seconds * 1000).toLocaleDateString("en-US"), " = 4/21/2022 : this will do for now.")} */}
             </div>
           )
         })}
-
       </div>
     </div>
   )
