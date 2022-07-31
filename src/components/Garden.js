@@ -1,19 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import image from '../img/gardenV1.jpeg';
 import axios from 'axios';
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { db } from '../firebase';
 
-
 function Garden() {
-  
-  const [ pokemonName, setPokemonName ] = useState([]);
-  const [ pokemonIMGURL, setPokemonIMGURL ] = useState([]);
-  const [ dbPokemon, setDbPokemon ] = useState([]);
   const [ imgToDB, setimgToDB ] = useState();
   const [ myPokemon, setMyPokemon ] = useState("");
 
   const randomNum = Math.floor(Math.random() * 151) +1;
+  const pokemonCollectionRef = collection(db, "pokemen");
 
   useEffect(() => {
     const getPokemon = async() => {
@@ -23,25 +19,14 @@ function Garden() {
     getPokemon()
   }, [imgToDB]);  // each time a pokemon is added, pokemon will be fetched and looped on screen.
 
-
-  const getIMG = ()=>{
+  const addPokemon = async (e) => {
     const imageUrl = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${randomNum}.png?raw=true`;
     setimgToDB(imageUrl);
+    e.preventDefault(); 
+    await addDoc(pokemonCollectionRef, {  url: imgToDB });
+    console.log(imgToDB);
   }
-
-  const pokemonCollectionRef = collection(db, "pokemen");
-
-  const addPokemon = async (e) => {
-    if(getIMG){
-      getIMG()
-      e.preventDefault(); 
-      await addDoc(pokemonCollectionRef, {  url: imgToDB });
-      console.log(imgToDB);
-    } else {
-      console.log("do nothing. initial state is undefined - AKA false.")
-    }
-  } 
-
+  
   return (
   <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%] rounded">
     <div className="px-6 pt-6 2xl:container rounded">
@@ -54,8 +39,7 @@ function Garden() {
                 {myPokemon.map((pokemon) => {
                   return(
                     <div key={pokemon.url}>
-                      <img className=" w-30 h-30" key={pokemon.url} src={pokemon.url} /> 
-                      {console.log(pokemon)}
+                      <img className=" w-40 h-40" key={pokemon.url} src={pokemon.url} /> 
                     </div>
               )
             })} 
@@ -74,7 +58,9 @@ function Garden() {
 
 export default Garden 
 
-
+// const [ pokemonName, setPokemonName ] = useState([]);
+// const [ pokemonIMGURL, setPokemonIMGURL ] = useState([]);
+// const [ dbPokemon, setDbPokemon ] = useState([]);
 
   //const imageUrl = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${randomNum}.png?raw=true`;
 
