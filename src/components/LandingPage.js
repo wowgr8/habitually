@@ -3,6 +3,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { auth } from '../firebase';
 import { Context } from '../utils/Context';
+import backgroundH from "../img/sprout.gif";
 
 function LandingPage() { //{isAuth, setIsAuth}
 
@@ -34,7 +35,18 @@ function LandingPage() { //{isAuth, setIsAuth}
 
   useEffect(()=>setIsAuth(isAuth))
 
+
+
   return (
+    <div
+      class="bk_Img"
+      style={{
+        backgroundImage: "url(" + backgroundH + ")",
+        backgroundSize: "cover",
+        height: "100vh",
+      }}
+    >
+
     <div id="landingPageDiv" className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
       <div className="px-6 pt-6 2xl:container">
         {/* fix form so that it is more responsive... remove column so it doesnt float right */}
@@ -57,7 +69,11 @@ function LandingPage() { //{isAuth, setIsAuth}
         {/* </div> */}
       </div>
     </div>
+  </div>
+  )
+}
 
+export default LandingPage;
 
 
     //pre tailwind
@@ -70,10 +86,5 @@ function LandingPage() { //{isAuth, setIsAuth}
     //     <button className='authButton' onClick={monitorAuthState}>Get Started</button>
     //   </div>
     // </div>
-  )
-}
-
-export default LandingPage;
-
 
 
