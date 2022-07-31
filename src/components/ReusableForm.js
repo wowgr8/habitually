@@ -15,7 +15,7 @@ function ReusableForm(props){
 
 
       <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg shadow-md  border border-gray-200 ">
-              <h3 class="pt-4 text-2xl text-center">NEW DETAILS</h3>
+              <h3 class="pt-4 text-2xl text-center">{props.title}</h3>
               <form onSubmit={(props.onSubmissionHandler)} class="px-12 pt-6 pb-8 mb-4 bg-white dark:bg-gray-800 rounded">
                 <div class="mb-4 md:flex md:justify-between">
                   <div class="mb-4 md:mr-2 md:mb-0">
@@ -121,7 +121,8 @@ ReusableForm.propTypes = {
   onSubmissionHandler: PropTypes.func,
   buttonText: PropTypes.string,
   onDelete: PropTypes.func,
-  onBack: PropTypes.func
+  onBack: PropTypes.func,
+  title: PropTypes.string
 };
 
 export default ReusableForm;
