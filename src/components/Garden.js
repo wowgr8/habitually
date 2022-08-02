@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import image from '../img/gardenV1.jpeg';
-import axios from 'axios';
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { db } from '../firebase';
 
@@ -17,7 +16,7 @@ function Garden() {
       setMyPokemon(data.docs.map((doc) => ({...doc.data(), id: doc.id}))); 
     }
     getPokemon()
-  }, [imgToDB]);  // each time a pokemon is added, pokemon will be fetched and looped on screen.
+  }, [imgToDB]); 
 
   const addPokemon = async (e) => {
     const imageUrl = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${randomNum}.png?raw=true`;
@@ -57,18 +56,3 @@ function Garden() {
 }
 
 export default Garden 
-
-// const [ pokemonName, setPokemonName ] = useState([]);
-// const [ pokemonIMGURL, setPokemonIMGURL ] = useState([]);
-// const [ dbPokemon, setDbPokemon ] = useState([]);
-
-  //const imageUrl = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${randomNum}.png?raw=true`;
-
-  // useEffect(()=> {
-  //   const pokemonRes = async() => {await axios.get(`https://pokeapi.co/api/v2/pokemon/${randomNum}/`)
-  //   const pokemonIURL = pokemonRes.data.sprites.front_default;
-  //   setPokemonIMGURL(pokemonIURL);
-  //   const pokeName = pokemonRes.data.name;
-  //   setPokemonName(pokeName);
-  //   }
-  // }, [ ]) 
