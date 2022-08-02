@@ -4,29 +4,25 @@ import { useNavigate } from 'react-router-dom';
 
 
 function HabitDetail(){
+
   const { selectedHabit, setSelectedHabit,  habitBody } = useContext(Context);
   const [newS, setS] = useState();
   const [newM, setM] = useState();
   const [newH, setH] = useState();
   const [newD, setD] = useState();
 
-  //console.log(habitBody); // {habitSummary: 'Test', habitTimeFrame: ut, createdAt: ut, habitName: 'create'}
-  //console.log(habitBody.habitTimeFrame);// ut {seconds: 1659294120, nanoseconds: 322000000}
-  //console.log(habitBody.habitTimeFrame.seconds * 1000);// 1659294120000
-
-  let interval;
   const second = 1000;
   const minute = second * 60;
   const hour = minute * 60;
   const day = hour * 24;
+  let interval;
 
   useEffect(()=>{
     const countDown = () => {
-      const eventDay = new Date(habitBody.habitTimeFrame.seconds * 1000); // returns obj.
+      const eventDay = new Date(habitBody.habitTimeFrame.seconds * 1000); 
       let now = new Date() /1 ;
       let timeSpan = eventDay - now;
       if (timeSpan <= 0) {
-        console.log("Today is the event day");
         clearInterval(interval);
         return;
         } else {
@@ -57,8 +53,6 @@ function HabitDetail(){
     }
   }, []);
 
-  // add this to useEffect return() => { clearInterval(interval) } // to unmount.
-
   let navigate = useNavigate();
 
   const editBtn = () => {
@@ -67,7 +61,6 @@ function HabitDetail(){
   
   const backButton = () => {
     setSelectedHabit();
-    console.log(selectedHabit);
     navigate("/HabitList");
   }
 
@@ -119,7 +112,6 @@ function HabitDetail(){
               </tr>
             </tbody>
           </table>
-            {/* text-center dark:bg-gray-800 dark:border-gray-700  */}
           <div class="w-full bg-gray rounded-lg shadow-md pt-10 text-white">
             <div class="py-3 px-4">PROGRESS</div>
             <table class="w-full text-sm text-left text-gray-400 ">
@@ -168,8 +160,6 @@ function HabitDetail(){
                       <progress class="progress progress-success w-26 " value={newD} max="100"></progress>
                     </td>
                 </tr>
-
-
               </tbody>
             </table>
             <table>
