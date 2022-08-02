@@ -1,16 +1,13 @@
-import React, {useState, useEffect, useContext} from "react";
-import Habit from "./Habit";
-import { collection, updateDoc, doc, get, getDoc, getDocs, setDoc } from "firebase/firestore";
+import React, { useEffect, useContext } from "react";
+import { collection, getDocs } from "firebase/firestore";
 import { db, auth } from '../firebase';
 import { useNavigate } from "react-router-dom";
 import {  signOut } from "firebase/auth";
 import { Context } from '../utils/Context';
-// import for habitlist if we choose to use
 
 function SideBar(){
-  // placeholder for function handling search
-  // const [users, setUsers] = useState([]);
-  const { users, setUsers, isAuth, setIsAuth } = useContext(Context);
+
+  const { users, setUsers, setIsAuth } = useContext(Context);
   const usersCollectionRef = collection(db, "user");
   
   useEffect(() => {
@@ -21,17 +18,12 @@ function SideBar(){
     getUsers()
   }, []);
   
-  // set up onhabit selection here. 
-  // you can set up a utils dir/file and export authSign out and onHabitSelection to habitlist, here, and login.....
-
   let navigate = useNavigate();
 
   const authSignOut = async (event) => {
     event.preventDefault();
     signOut(auth).then(() => {
       setIsAuth(false);
-      console.log(isAuth);
-      console.log("Till next time!");
       navigate("/LandingPage");
     }).catch((error) => {
       const errorCode = error.code;
@@ -46,7 +38,6 @@ function SideBar(){
     <div className="sidebarrr">
       <aside className= "fixed top-0 z-10 ml-[-100%] flex h-screen w-full flex-col justify-between border border-slate-800 bg-gray-900 px-6 pb-3 transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]">
         <div>
-          {/* <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">HABITUALLY</h1> */}
           <div className="mx-10 px-6 py-4 w-52">   
             <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500 ">HABITUALLY</h1>
           </div>
@@ -86,21 +77,3 @@ function SideBar(){
 }
 
 export default SideBar;
-
-
-// Pre-Tailwind:
-
-// <h2>Sidebar placeholder</h2>
-// <p>Will show list of Habits (perhaps via habitlist.js) at all times. Clicking on one will move you to the that habit via id.</p>
-// <div classNameName="row">
-//   {users.map((user) => {
-//     return(
-//       <div classNameName="cardHabitSidebar">
-//         <div classNameName="containerHabitSidebar">
-//             <p>{user.habitName}</p>
-//           <hr></hr>
-//         </div>
-//       </div>
-//     )
-//   })}
-// </div>
