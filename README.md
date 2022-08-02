@@ -6,12 +6,15 @@
 
 #### _A React app for creating and managing habits._
 
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
+
 ## Previews <a id="previews"></a>
 
 ![placeholder for images/gifs](link to image)
 
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
+
 ## Table of Contents
 
 1. [Previews](#previews)
@@ -24,8 +27,9 @@
 8. [License](#license)
 
 
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
-## Technologies Used <a id="technologies"></a>
+## Technologies Used <a id="technologies"></a>  
 
 * React.js
 * JavaScript - JSX
@@ -35,20 +39,26 @@
 * CSS
 
 
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
 ## Description <a id="description"></a>
 
 A React application where ...
 
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
 ## Component Diagram and Hierarchy <a id = "diagram"></a>
 
 ![diagram placeholder](link-to-gifs/images)
 
 
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
 ## Setup and Installation <a id="setup"></a>
+
 <details ><summary>click to see Available Scripts</summary>
+
+
 
 ## Getting Started with Create React App
 
@@ -122,20 +132,24 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 </details>
 
-
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 ## Known Bugs <a id="bugs"></a>
 
 * _No known issues_
 
-## Contact Me <a id="contact"></a>
 
-If you encounter any issues or have any questions or ideas for this site, please contact:
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
+
+## Contact Me <a id="contact"></a> 
 
 Cesar Lopez:
 * Email: [Lopez.cesar.aug@gmail.com](mailto:lopez.cesar.aug@gmail.com)
 * Github: [wowgr8](https://github.com/wowgr8)
 * LinkedIn: [https://www.linkedin.com/in/cesar-aug-lopez](https://www.linkedin.com/in/cesar-aug-lopez)
-  
+
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
+
 ## License <a id="license"></a>
 
 _MIT_
