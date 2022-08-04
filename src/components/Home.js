@@ -12,21 +12,28 @@ function Home() {
 
   return(
     <div className="homeContainer ">
-      {!isAuth  
-        ?
-          <LandingPage />
-        : <>
-            <Sidebar />
-            <div>
+
               {isOpen 
                 ? null
                 : <HabitList />
                 }
-            </div>
-          </>
-      }
+
     </div>
   );
 }
 
 export default Home;
+
+{/* <div className="homeContainer ">
+{!isAuth  
+  ? <LandingPage />          
+  : <>
+      <div>
+        {isOpen 
+          ? null
+          : <HabitList />
+          }
+      </div>
+    </>
+}
+</div> */}
