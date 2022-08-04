@@ -1,20 +1,14 @@
-import { React, useState, useEffect, useCallback, useContext } from "react";
+import React, { useEffect, useCallback, useContext } from "react";
 import Habit from "./Habit";
-import { collection, doc, getDoc, getDocs, Timestamp } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from '../firebase';
 import { useNavigate, Link } from "react-router-dom";
-import EditHabitForm from "./EditHabitForm";
 import { Context } from '../utils/Context';
-
 
 function HabitList(){
   
   const { selectedHabit, setSelectedHabit, 
-          users, setUsers,
-          habitBody, setHabitBody,
-          setNewTimeFrame,
-          createToDate, setCreateToDate,
-          tFToDate, setTFToDate
+          users, setUsers, setHabitBody
         } =useContext(Context);
 
   const usersCollectionRef = collection(db, "user");
@@ -28,19 +22,12 @@ function HabitList(){
     getUsers()
   }, []); 
 
-  //Uses useCallback to extract the function outside useEffect :source - https://devtrium.com/posts/async-functions-useeffect
   const onHabitSelection = useCallback( async (id)=> {
     const idRef =  doc(db, "user", id);
     const individualHabit = await getDoc(idRef);
     if (individualHabit.exists()) {   
-      console.log("individualHabit");
-      console.log(individualHabit); // null on first run (successful), obj on second.
-      console.log("individualHabit.id")
-      console.log(individualHabit.id) // returns id
       setHabitBody(individualHabit.data());
-      // setCreateToDate(new Date(individualHabit.createdAt.seconds * 1000).toLocaleDateString("en-US")); TypeError: Cannot read properties of undefined (reading 'seconds')
-      setSelectedHabit(individualHabit.id); // null when useEffect runs the first time per click, true when useEffect runs the second time per click.
-      console.log("selectedHabit");
+      setSelectedHabit(individualHabit.id); 
     } else {
       console.log("No such document!");
     }
@@ -48,19 +35,9 @@ function HabitList(){
 
   useEffect(() => {
     onHabitSelection();
-    console.log("useEffect ", selectedHabit);
-    if (selectedHabit) { // in the beginning, this starts out as `undefined`, which is the same thing as `false`
-      // If defined, do this:
-      console.log(createToDate)
-      console.log("selected habit is undefined and it exists. Inside If.")
-      // navigate("/EditHabitForm");
+    if (selectedHabit) { 
       navigate("/HabitDetail");
-    } else {
-      // if undefined, do this:
-      console.log(selectedHabit)
-      console.log("selectedHabit is undefined and does not exist. Inside else.")
-    }
-    console.log("End of useEffect()")
+    } 
   },[onHabitSelection]) 
   
   return(
@@ -93,24 +70,3 @@ function HabitList(){
 }
 
 export default HabitList;
-
-  // Pre-Tailwind
-  // <p>habitlist.js</p>
-  // <div className="row">
-  //   {users.map((user) => {
-  //     return(
-  //       <div className="cardHabit">
-  //         <div className="containerHabit">
-  //           <Habit
-  //             habitClicked={onHabitSelection}
-  //             id={user.id}
-  //             habitName={user.habitName}
-  //             habitSummary={user.habitSummary}
-  //             habitTimeFrame={user.habitTimeFrame}
-  //             />
-  //           <hr></hr>
-  //         </div>
-  //       </div>
-  //     )
-  //   })}
-  // </div>

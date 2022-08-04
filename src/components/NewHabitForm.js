@@ -1,4 +1,4 @@
-import { React, useContext } from "react";
+import React, { useContext } from "react";
 import ReusableForm from "./ReusableForm";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from '../firebase';

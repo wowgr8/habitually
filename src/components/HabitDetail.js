@@ -2,7 +2,6 @@ import { React, useContext, useEffect, useState } from "react";
 import { Context } from "../utils/Context";
 import { useNavigate } from 'react-router-dom';
 
-
 function HabitDetail(){
 
   const { selectedHabit, setSelectedHabit,  habitBody } = useContext(Context);
@@ -175,6 +174,5 @@ function HabitDetail(){
   </div>
   )
 }
-
 
 export default HabitDetail;

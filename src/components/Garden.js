@@ -25,7 +25,6 @@ function Garden() {
     setimgToDB(imageUrl);
     e.preventDefault(); 
     await addDoc(pokemonCollectionRef, {  url: imgToDB });
-    console.log(imgToDB);
   }
 
   function back(){

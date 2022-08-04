@@ -1,11 +1,11 @@
 import React from "react";
-// import for search functionality
 
 function SearchBar(){
-  // placeholder for function handling search
+  // placeholder for function handling search  - WIP
   
   return(
     <h2>Searchbar placeholder</h2>
+    
   );
 }
 

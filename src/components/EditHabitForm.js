@@ -1,4 +1,4 @@
-import { React, useState, useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import ReusableForm from "./ReusableForm"; 
 import { doc, updateDoc, deleteDoc } from "firebase/firestore";
 import { db } from '../firebase'
@@ -16,21 +16,19 @@ function EditHabitForm (){
   let navigate = useNavigate();
 
   const updateHabit = async(e) => {
-    console.log(selectedHabit, "IN EDIT.js");
     e.preventDefault();
     const newFields = {habitName: newHabit, 
                         habitSummary: newSummary, 
                         habitTimeFrame: newTimeFrame, 
                       }; 
     await updateDoc(doc(db, "user", selectedHabit), {...newFields}) 
-    setSelectedHabit(selectedHabit); // updates placeholders in reusable form.
+    setSelectedHabit(selectedHabit); 
   }
 
   const deleteHabit = async() =>{
     const idRef = doc(db, "user", selectedHabit);
     await deleteDoc(idRef);
     setSelectedHabit();
-    console.log(selectedHabit, "in delteHabit()")
     navigate("/HabitList");
   }
 
