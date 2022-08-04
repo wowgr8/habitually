@@ -11,6 +11,7 @@
 ## Previews <a id="previews"></a>
 
 ![](https://github.com/wowgr8/gifsV2/blob/main/habitually/habitually-login-create.gif)
+![](https://github.com/wowgr8/capstone/blob/main/gif/screencast%202022-08-03%2020-09-25.gif)
 
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
