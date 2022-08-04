@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import './App.css';
 import Home from './Home';
 import Login from "./Login";
@@ -10,6 +10,7 @@ import HabitList from './HabitList';
 import SideBar from './Sidebar';
 import HabitDetail from "./HabitDetail";
 import Garden from "./Garden";
+import { Context } from '../utils/Context';
 import { 
   BrowserRouter as Router,
   Routes,
@@ -18,10 +19,12 @@ import {
 
 function App() {
 
+  const { isAuth } = useContext(Context); 
+
   return (
     <Router>
         <Header />
-        <SideBar /> 
+        {isAuth ? <SideBar /> : null}  
         <Routes>
           <Route path="/LandingPage" element={<LandingPage />}/>
           <Route path="/Login" element={<Login />}/>
