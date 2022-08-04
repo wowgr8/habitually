@@ -10,7 +10,7 @@
 
 ## Previews <a id="previews"></a>
 
-![placeholder for images/gifs](link to image)
+![](https://github.com/wowgr8/gifsV2/blob/main/habitually/habitually-login-create.gif)
 
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
