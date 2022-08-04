@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { Context } from '../utils/Context';
 
 function Header(){
 
+  const { isAuth } = useContext(Context); 
   let navigate = useNavigate(); 
 
   function toGarden(){
@@ -10,7 +12,7 @@ function Header(){
   }
 
   return(
-    <nav className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
+    <nav className={!isAuth ? null : "ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]"}>
       <div className="sticky top-0 z-10 h-16 border border-slate-800 bg-gray-900 lg:py-2.5">
         <div className="flex items-center justify-between space-x-4 px-6 2xl:container">
           <h5 hidden className="text-2xl font-medium text-gray-600 lg:block">Habitually</h5>
@@ -37,7 +39,7 @@ function Header(){
         </div>
       </div>
     </nav>
-  );
+  )
 }
 
 export default Header;
