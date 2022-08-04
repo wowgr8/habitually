@@ -16,7 +16,7 @@ function LandingPage() {
     onAuthStateChanged(auth, (user) => {
       if(user){
         setIsAuth(true);
-        navigate("/");
+        navigate("/HabitList");
       }
       else { 
         setIsAuth(false);
@@ -36,8 +36,8 @@ function LandingPage() {
         height: "100vh",
       }}
     >
-    <div id="landingPageDiv" className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
-      <div className="px-6 pt-6 2xl:container pb-44 mb-44 pl-32 pt-44">
+    <div id="landingPageDiv" className="ml-auto mb-6 lg:w-[75%]">
+      <div className="px-6 pt-6 2xl:container pb-44 mb-44 pl-18 pt-44 justify-center">
         <div className="max-w-sm rounded-lg overflow-hidden shadow-lg  bg-white ml-60 border-gray-200 dark:bg-gray-800 dark:border-gray-700 mt-10 "> 
           <div className="flex flex-col min-h-full">
             <div className="px-6 py-4 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
