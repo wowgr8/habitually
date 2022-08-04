@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import image from '../img/gardenV1.jpeg';
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { db } from '../firebase';
+import { useNavigate } from 'react-router-dom';
 
 function Garden() {
   const [ imgToDB, setimgToDB ] = useState();
@@ -9,6 +10,7 @@ function Garden() {
 
   const randomNum = Math.floor(Math.random() * 151) +1;
   const pokemonCollectionRef = collection(db, "pokemen");
+  let navigate = useNavigate();
 
   useEffect(() => {
     const getPokemon = async() => {
@@ -24,6 +26,10 @@ function Garden() {
     e.preventDefault(); 
     await addDoc(pokemonCollectionRef, {  url: imgToDB });
     console.log(imgToDB);
+  }
+
+  function back(){
+    navigate("/HabitList");
   }
   
   return (
@@ -47,8 +53,9 @@ function Garden() {
           </div>
         </div>
       </div>
-      <footer class="footer bg-neutral text-neutral-content">
+      <footer class="footer bg-neutral text-neutral-content flex">
         <button onClick={addPokemon} className="text-white"><h1>ADD POKEMON</h1></button>
+        <button onClick={back} className="text-white"><h1>Home</h1></button>
       </footer>
     </div>
   </div>
