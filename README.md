@@ -33,17 +33,20 @@
 
 * React.js
 * JavaScript - JSX
-* NPM
+* Node.js
 * Webpack
 * HTML
 * CSS
+* TailwindCSS
+* Firebase
+* PokeAPI
 
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
 ## Description <a id="description"></a>
 
-A React application where ...
+A React application where the user can declare habits they'd like to build or break and track their progress. The user can create, read, update, and delete habits. 
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
