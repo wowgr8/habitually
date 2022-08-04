@@ -7,7 +7,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } f
 function Login(){ 
   let navigate = useNavigate();
 
-  const { setIsAuth, setSelectedHabit } = useContext(Context);
+  const { isAuth, setIsAuth, setSelectedHabit } = useContext(Context);
 
   const authSignUp = async (event) => {
     event.preventDefault();
@@ -34,7 +34,9 @@ function Login(){
     .then((userCredential) => {
       const user = userCredential.user;
       setIsAuth(true);
+      console.log(isAuth) // true
       setSelectedHabit();
+      navigate("/HabitList");
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -44,22 +46,9 @@ function Login(){
     });
   }
 
-  const authSignOut = async (event) => {
-    event.preventDefault();
-    signOut(auth).then(() => {
-      setIsAuth(false);
-      navigate("/LandingPage");
-    }).catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
-    });
-  }
-
   return(
-    <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
-      <div className="px-6 pt-6 2xl:container">
+    <div className="ml-auto mb-6  justify-center">
+      <div className="px-80 py-20">
         <div className="shadow-md rounded px-8 pt-16 pb-18 mb-4 flex flex-col rounded-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700 ">
           <form onSubmit={authSignUp}>
             <div className="mb-4 ">
@@ -114,11 +103,6 @@ function Login(){
                 <p >Already Have An Account? <span class="underline cursor-pointer"> Sign In</span>
                 </p>
               </button>
-            </div>
-          </form>
-          <form>
-            <div className="flex items-center justify-between">
-              <button onClick={authSignOut} className="bg-blue-500 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded" >Sign out</button>
             </div>
           </form>
         </div>
