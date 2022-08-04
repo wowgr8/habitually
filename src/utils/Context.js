@@ -9,7 +9,7 @@ export const ContextProvider = ({ children }) => {
   const [ newSummary, setNewSummary ] = useState(() =>"")
   const [ newTimeFrame, setNewTimeFrame ] = useState(() =>"")
   const [ isOpen, setIsOpen ] = useState();
-  const [ isAuth, setIsAuth ] = useState();
+  const [ isAuth, setIsAuth ] = useState(false);
   const [ habitBody, setHabitBody ] = useState();
 
   const [ selectedHabitId, setSelectedHabitId ] = useState(); // unused -WIP
