@@ -29,7 +29,7 @@ function LandingPage() {
 
   return (
     <div
-      class="bk_Img"
+      className="bk_Img"
       style={{
         backgroundImage: "url(" + backgroundH + ")",
         backgroundSize: "cover",

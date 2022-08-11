@@ -84,8 +84,8 @@ function Login(){
                 </button>
             </div>
             <div className="flex items-center justify-between">
-              <button onClick={toggleView} class="mt-4 text-sm" type="submit">
-                <p >New? <span class="underline cursor-pointer"> Sign Up</span>
+              <button onClick={toggleView} className="mt-4 text-sm" type="submit">
+                <p >New? <span className="underline cursor-pointer"> Sign Up</span>
                 </p>
               </button>
             </div>
@@ -118,8 +118,8 @@ function Login(){
             </div>
           </form>
           <div className="flex items-center justify-between">
-            <button onClick={toggleView} class="mt-4 text-sm" type="submit">
-              <p >Already Have An Account? <span class="underline cursor-pointer"> Sign In</span></p>
+            <button onClick={toggleView} className="mt-4 text-sm" type="submit">
+              <p >Already Have An Account? <span className="underline cursor-pointer"> Sign In</span></p>
             </button>
           </div> 
           </>

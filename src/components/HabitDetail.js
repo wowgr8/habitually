@@ -67,96 +67,96 @@ function HabitDetail(){
   <div className="h-full ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]" >
     <div className="h-full px-6 pt-6 2xl:container ">
       <div className=" rounded-lg border border-gray-200 shadow-md bg-white dark:bg-gray-800 px-8 pt-16 pb-18 mb-4  flex-col ">
-        <div class="overflow-x-auto relative">
-          <table class="w-full text-xl text-left text-white-500 ">
-            <thead class="text-3xl text-gray-800 uppercase bg-white-50 dark:text-white ">
+        <div className="overflow-x-auto relative">
+          <table className="w-full text-xl text-left text-white-500 ">
+            <thead className="text-3xl text-gray-800 uppercase bg-white-50 dark:text-white ">
               <tr>
-                <th scope="col" class="py-3 px-4">
+                <th scope="col" className="py-3 px-4">
                   DETAILS 
                 </th>
               </tr>
             </thead>
             <tbody>
-              <tr class="bg-gray-700">
-                <th scope="row" class="py-4 px-6 font-large text-gray-900 whitespace-nowrap font-bold dark:text-gray-400">
+              <tr className="bg-gray-700">
+                <th scope="row" className="py-4 px-6 font-large text-gray-900 whitespace-nowrap font-bold dark:text-gray-400">
                   Id  
                 </th>
-                <td class="py-4 px-6 text-gray-400">
+                <td className="py-4 px-6 text-gray-400">
                   {selectedHabit}
                 </td>
               </tr>
-              <tr class="bg-gray-600">
-                <th scope="row" class="py-4 px-6 font-large  font-bold text-gray-900 whitespace-nowrap dark:text-gray-400">
+              <tr className="bg-gray-600">
+                <th scope="row" className="py-4 px-6 font-large  font-bold text-gray-900 whitespace-nowrap dark:text-gray-400">
                   Name 
                 </th>
-                <td class="py-4 px-6 text-gray-400">
+                <td className="py-4 px-6 text-gray-400">
                   {habitBody.habitName}
                 </td>
               </tr>
-              <tr class="bg-gray-700">
-                <th scope="row" class="py-4 px-6 font-large text-gray-900 whitespace-nowrap font-bold dark:text-gray-400">
+              <tr className="bg-gray-700">
+                <th scope="row" className="py-4 px-6 font-large text-gray-900 whitespace-nowrap font-bold dark:text-gray-400">
                   Summary
                 </th>
-                <td class="py-4 px-6 text-gray-400">
+                <td className="py-4 px-6 text-gray-400">
                   {habitBody.habitSummary}
                 </td>
               </tr>
-              <tr class="bg-gray-600">
-                <th scope="row" class="py-4 px-6 font-large text-gray-900 whitespace-nowrap font-bold dark:text-gray-400">
+              <tr className="bg-gray-600">
+                <th scope="row" className="py-4 px-6 font-large text-gray-900 whitespace-nowrap font-bold dark:text-gray-400">
                   Created  
                 </th>
-                <td class="py-4 px-6 text-gray-400">
+                <td className="py-4 px-6 text-gray-400">
                   {new Date(habitBody.habitTimeFrame.seconds * 1000).toLocaleDateString("en-US")}
                 </td>
               </tr>
             </tbody>
           </table>
-          <div class="w-full bg-gray rounded-lg shadow-md pt-10 text-white">
-            <div class="py-3 px-4">PROGRESS</div>
-            <table class="w-full text-sm text-left text-gray-400 ">
+          <div className="w-full bg-gray rounded-lg shadow-md pt-10 text-white">
+            <div className="py-3 px-4">PROGRESS</div>
+            <table className="w-full text-sm text-left text-gray-400 ">
               <tbody >
-                <tr class="bg-gray-700">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 dark:text-gray-400 whitespace-nowrap">
+                <tr className="bg-gray-700">
+                    <th scope="row" className="py-4 px-6 font-medium text-gray-900 dark:text-gray-400 whitespace-nowrap">
                       Seconds:
                     </th>
                     <td>
                       <h2 id="second"></h2>
                     </td>
                     <td>
-                      <progress class="progress progress-success w-56" value={newS} max="100"></progress>
+                      <progress className="progress progress-success w-56" value={newS} max="100"></progress>
                     </td>
                 </tr>
-                <tr class="bg-gray-600">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 dark:text-gray-400 whitespace-nowrap">
+                <tr className="bg-gray-600">
+                    <th scope="row" className="py-4 px-6 font-medium text-gray-900 dark:text-gray-400 whitespace-nowrap">
                       Minutes:
                     </th>
                     <td>
                       <h2 id="minute"></h2>
                     </td>
                     <td>
-                      <progress class="progress progress-success w-26" value={newM} max="100"></progress>
+                      <progress className="progress progress-success w-26" value={newM} max="100"></progress>
                     </td>
                 </tr>
-                <tr class="bg-gray-700">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900  dark:text-gray-400 whitespace-nowrap">
+                <tr className="bg-gray-700">
+                    <th scope="row" className="py-4 px-6 font-medium text-gray-900  dark:text-gray-400 whitespace-nowrap">
                       Hours:
                     </th>
                     <td>
                       <h2 id="hour"></h2>
                     </td>
                     <td>
-                      <progress class="progress progress-success w-26" value={newH} max="100"></progress>
+                      <progress className="progress progress-success w-26" value={newH} max="100"></progress>
                     </td>
                 </tr>
-                <tr class="bg-gray-600">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 dark:text-gray-400 whitespace-nowrap">
+                <tr className="bg-gray-600">
+                    <th scope="row" className="py-4 px-6 font-medium text-gray-900 dark:text-gray-400 whitespace-nowrap">
                       Days:
                     </th>
                     <td>
                       <h2 id="day"></h2>
                     </td>
                     <td>
-                      <progress class="progress progress-success w-26 " value={newD} max="100"></progress>
+                      <progress className="progress progress-success w-26 " value={newD} max="100"></progress>
                     </td>
                 </tr>
               </tbody>

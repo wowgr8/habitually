@@ -52,7 +52,7 @@ function Garden() {
           </div>
         </div>
       </div>
-      <footer class="footer bg-neutral text-neutral-content flex">
+      <footer className="footer bg-neutral text-neutral-content flex">
         <button onClick={addPokemon} className="text-white"><h1>ADD POKEMON</h1></button>
         <button onClick={back} className="text-white"><h1>Home</h1></button>
       </footer>
