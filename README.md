@@ -4,7 +4,7 @@
 
 ### _July 15, 2022_
 
-#### _A React app for creating and managing habits._
+#### _A React app for creating and managing habits. Once a habit has successfully been completed, the user can visit their garden where each completed habit will be represented by a pokemon._
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
@@ -139,7 +139,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 ## Known Bugs <a id="bugs"></a>
 
-* _No known issues_
+* _WIP - Completed habit and new pokemon trophy are not associated at the moment. _
+* _WIP - Sidebar dissapears upon refreshing page. _
 
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
