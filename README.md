@@ -53,7 +53,7 @@ A React application where the user can declare habits they'd like to build or br
 
 ## Component Diagram and Hierarchy <a id = "diagram"></a>
 
-![diagram placeholder](link-to-gifs/images)
+![](https://github.com/wowgr8/habitually/blob/main/src/img/HOC.jpg)
 
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
